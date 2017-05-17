@@ -12,13 +12,17 @@
 
 		:javascript
 
-			/* INITIALIZE */
+			/* ---- INITIALIZE ---- */
 
+			/* FOR JSON FORMULA */
+			
 			var JSONFormulaFromURL = [];
 			var JSONFormulaRAWDummy = JSON.parse(JSONFormula);
 			var JSONFormulaProductDummy = JSONFormulaRAWDummy.si;
 			var JSONFormulaSectionDummy = JSONFilterContentByKey(JSONFormulaProductDummy, "productKey", "unitlink", "productContent", "productState");
 			var JSONFormulaContentDummy = JSONFormulaSectionDummy.formula;
+			
+			/* FOR JSON INPUT */
 
 			var JSONInputFromURL = [];
 			var JSONInputRAWDummy = JSON.parse(JSONInput);

@@ -370,7 +370,7 @@ function JSONFilterContentByKey(JSONRAW, stringJSONKey, stringValueKey, stringJS
 	var stringJSONRAWKey;
 	var stringJSONRAWContent;
 	var stringJSONRAWState;
-
+	
 	for (var i = 0; i < JSONRAW.length; i++)
 	{
 		stringJSONRAWKey = eval("JSONRAW[" + i + "]." + stringJSONKey);
