@@ -1,0 +1,237 @@
+!!! 5
+
+%html
+
+	/ HEAD
+
+	%head
+		= Haml::Engine.new(File.read("include_productconfigurator_formulaheader.haml")).render
+		%title BCA Life - BLESS, Health Questionnaire 1 Form
+
+		/ JQUERY
+
+		:javascript
+
+			/* INITIALIZE */
+
+			var JSONLayoutFromURL = [];
+			var JSONLayoutRAWDummy = JSON.parse(JSONLayout);
+			var JSONLayoutSIDummy = JSONLayoutRAWDummy.si;
+			var JSONLayoutProductDummy = JSONFilterContentByKey(JSONLayoutSIDummy, "productKey", "unitlink", "productContent", "productState");
+
+			var JSONFormulaFromURL = [];
+			var JSONFormulaRAWDummy = JSON.parse(JSONFormula);
+			var JSONFormulaSIDummy = JSONFormulaRAWDummy.si;
+			var JSONFormulaProductDummy = JSONFilterContentByKey(JSONFormulaSIDummy, "productKey", "unitlink", "productContent", "productState");
+			var JSONFormulaContentDummy = JSONFormulaProductDummy.formula;
+
+			var JSONInputFromURL = [];
+			var JSONInputRAWDummy = JSON.parse(JSONInput);
+			var JSONInputProductDummy = JSONInputRAWDummy.si;
+			var JSONInputContentDummy = JSONFilterContentByKey(JSONInputProductDummy, "productKey", "unitlink", "productContent", "productState");
+
+			var arrayInputSection = ["SelectFormulaConfiguratorInputResultSection", "SelectFormulaConfiguratorInputSection"];
+			var arrayInputKey = ["SelectFormulaConfiguratorInputResultKey", "SelectFormulaConfiguratorInputKey"];
+
+			var JSONInputSection;
+			var JSONInputKey;
+			var JSONFormulaCurrent;
+
+
+			// READY
+
+			$(document).ready(function()
+			{
+				/* GET BY JSON */
+
+				JSONLayoutFromURL = getJSONFromURL("JSONLayout", JSONLayoutSIDummy);
+				JSONFormulaFromURL = getJSONFromURL("JSONFormula", JSONFormulaSIDummy);
+				JSONInputFromURL = getJSONFromURL("JSONInput", JSONInputContentDummy);
+
+				/* GENERATE VALUE */
+
+				generateFormulaDirectory(JSONFormulaFromURL, "GeneratedFormula");
+				generateSelectOption("SelectFormulaConfiguratorParameterType", arrayObjectParameterType);
+				generateSelectOption("SelectFormulaConfiguratorOperatorKey", arrayObjectOperatorKey);
+				generateSelectOption("SelectFormulaConfiguratorFormulaState", arrayObjectStateKey);
+
+				/* USER INTERFACE */
+
+				$("main").css("border-top-color", "#D24B19");
+				$("h1").text("Formula Configurator");
+				setContentHeightBasedOnScreen("HeaderMain", "AsideDirectory");
+				setContentHeightBasedOnScreen("HeaderMain", "MainContent");
+				setupLayoutBasedOnScreen();
+
+				$(function()
+				{
+				    $("#FormulaContent").sortable(
+				    {
+				        update: function()
+				        {
+				           JSONFormulaFromURL[stringJSONKeyFormulaContent] = getFormulaContentFromLayout("FormulaContent");
+				           formulaVerificator("FormulaContent");
+				        }
+				    });
+
+				    $("#FormulaContent").disableSelection();
+			  	});
+			});
+
+
+	/ BODY
+
+	%body#Configurator
+
+		/ NAVIGATION
+
+		= Haml::Engine.new(File.read("navigation_slide_general.haml")).render
+
+		/ CONTENT
+
+		%div#ContentContainer
+
+			%div#Content
+
+				/ HEADER
+
+				= Haml::Engine.new(File.read("header_productconfigurator_general.haml")).render
+
+				/ ASIDE
+
+				= Haml::Engine.new(File.read("aside_directory_formula.haml")).render
+
+				/ MAIN
+
+				%main#MainContent
+					%h2.PositionerLeft
+						%span#SpanHeaderFormula{ "data-formula-key" => "" } Formula 
+					%input.ButtonAddSecondary.ButtonDetached.PositionerRight{ :type => "button", :value => "Add New Parameter", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
+					%br
+
+					%div#FormulaContent.FormulaMainContainer
+
+					%form#FormFormulaGeneral
+						%fieldset#FieldsetFormulaGeneral
+							%table.Full.Borderless.Spacing.Margin
+								%thead
+									%tr.Center
+										%th Formula 
+								%tbody
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorCoveredPerson" } Covered Person 
+										%td.Center
+											%select#SelectProductConfiguratorCoveredPerson.Medium
+												%option{ :value => "EntryAge" } @EntryAge
+												%option{ :value => "PolAge" } @PolAge
+												%option{ :value => "Smoker (NS, S)" }  @Smoker (NS, S)
+												%option{ :value => "Gender (M, F)" }  @Gender (M, F)
+										%td.Center
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorBasicPlan" } Basic Plan
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" } @BSA
+												%option{ :value => "PolAge" } @Term
+												%option{ :value => "Smoker (NS, S)" }   @Prem_Holiday
+												%option{ :value => "Gender (M, F)" }  @Premi%
+												%option{ :value => "EntryAge" } @Premi%_Term
+												%option{ :value => "PolAge" } @PremiMIL
+												%option{ :value => "Smoker (NS, S)" }   @PremiMIL_Term
+										%td.Center
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorInputResultSection" } Rider
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  Code
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @RSA
+												%option{ :value => "EntryAge" }  @Term
+												%option{ :value => "EntryAge" }  @Premi%
+												%option{ :value => "EntryAge" }  @Premi%_Term
+												%option{ :value => "EntryAge" }  @PremiMIL
+												%option{ :value => "EntryAge" }  @PremiMIL_Term
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorInputResultKey" } Fund
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  Code
+												%option{ :value => "EntryAge" }  Investment Rate
+												%option{ :value => "EntryAge" }  Investment Return
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @InvRate_Single
+												%option{ :value => "EntryAge" }  @InvRate_Yearly
+												%option{ :value => "EntryAge" }  @InvRate_SemiAnn
+												%option{ :value => "EntryAge" }  @InvRate_Quarterly
+												%option{ :value => "EntryAge" }  @InvRate_Monthly
+												%option{ :value => "EntryAge" }  @High
+												%option{ :value => "EntryAge" }  @Medium
+												%option{ :value => "EntryAge" }  @Low
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorFormulaState" } Master Table
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  Payment Mode
+												%option{ :value => "EntryAge" }  Channel
+												%option{ :value => "EntryAge" }  Occupation
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @OccClass
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorFormulaState" } Expression
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }   -
+												%option{ :value => "EntryAge" }   +
+												%option{ :value => "EntryAge" }  /
+												%option{ :value => "EntryAge" }  (
+												%option{ :value => "EntryAge" }   )
+												%option{ :value => "EntryAge" }  *
+												%option{ :value => "EntryAge" }   t-1
+												%option{ :value => "EntryAge" }   PV
+												%option{ :value => "EntryAge" }   FV
+												%option{ :value => "EntryAge" }  Min
+												%option{ :value => "EntryAge" }  Max
+										%td.Center
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorFormulaState" } Custom Formula
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "" }   
+										%td.Center		
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td{ :colspan => "4" }
+											%textarea#AreaPotentialDiscussionActionDifferent.Full{ :maxlength => "200", :onpaste => "return false;", :onchange => "filterInputWhitespace(this.id)" }
+					%div.ButtonContainer.Right
+						%input.ButtonAddSecondary.ButtonAttached{ :type => "button", :value => "Save", :onclick => "formulaSave(JSONFormulaFromURL, 'http://localhost:3883/InternalHandler.ashx?JSONFormula=')" }
+						
+
+				

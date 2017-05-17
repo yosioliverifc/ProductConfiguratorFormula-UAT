@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+  <!-- HEAD -->
+  <head>
+    <!-- FOR DEVELOPMENT -->
+    <!-- FOR DEPLOYMENT -->
+    <!-- META DATA -->
+    <meta charset='utf-8'>
+    <meta content='BCA Life - BLESS' name='application-name'>
+    <meta content='BCA Life Electronic Submission.' name='description'>
+    <meta content='BCA Life Electronic Submission.' name='keywords'>
+    <meta content='BCA Life' name='author'>
+    <meta content='Ibrahim Aziz' name='designer'>
+    <meta content='Copyright 2016 BCA Life' name='copyright'>
+    <meta content='BCA Life Electronic Submission.' name='dcterms.description'>
+    <meta content='BCA Life' name='dcterms.creator'>
+    <meta content='BCA Life' name='dcterms.rightsHolder'>
+    <meta content='All rights reserved. No part of this document may be reproduced or transmitted in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without prior written permission from the Author, BCA Life.' name='dcterms.rights'>
+    <meta content='2016' name='dcterms.dateCopyrighted'>
+    <meta content='width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'>
+    <!-- FAVICON -->
+    <!-- %link{ :rel => "shortcut icon", :href => "#{urlResource}logo_favicon.ico" } -->
+    <!-- %link{ :rel => "shortcut icon", :href => "#{urlResource}logo_favicon.ico", :type => "image/x-icon" } -->
+    <!-- %link{ :rel => "icon", :href => "#{urlResource}logo_favicon.ico", :type => "image/x-icon" } -->
+    <!-- CSS -->
+    <link href='../../Style/CSS/productconfigurator-layout-general.css' id='csslayout' rel='stylesheet' type='text/css'>
+    <link href='../../Style/CSS/productconfigurator-font-general.css' id='cssfont' rel='stylesheet' type='text/css'>
+    <link href='../../Style/CSS/productconfigurator-input-general.css' id='cssinput' rel='stylesheet' type='text/css'>
+    <link href='../../Style/CSS/productconfigurator-link-general.css' id='csslink' rel='stylesheet' type='text/css'>
+    <link href='../../Style/CSS/bcalmpos-fontsize-medium.css' id='cssfontsize' rel='stylesheet' type='text/css'>
+    <link href='../../Style/CSS/productconfigurator-fontfamily-bpreplay.css' id='cssfontfamily' rel='stylesheet' type='text/css'>
+    <link href='../../Style/CSS/productconfigurator-theme-stanley-svg.css' id='csstheme' rel='stylesheet' type='text/css'>
+    <!-- %link{ :id => "cssresponsive", :href => "#{urlCSS}#{urlCSSSectionPrefix}-responsive-general.css", :rel => "stylesheet", :type => "text/css" } -->
+    <!-- JAVA SCRIPT -->
+    <!-- %script{ :type => "text/javascript", :src => "#{urlJavaScript}jquery.mobile-1.4.5.min.js" } -->
+    <script src='../../Java Script/Minimized/jquery-3.1.1.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/jquery-ui-1.12.1.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/jquery-migrate-1.4.1.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/ibrahimaziz-general.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/ibrahimaziz-productconfigurator-constant.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/ibrahimaziz-productconfigurator-back.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/ibrahimaziz-formulaconfigurator.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/ibrahimaziz-constantconfigurator.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/ibrahimaziz-tableconfigurator.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/layout-si-unitlink.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/formula-si-unitlink.min.js' type='text/javascript'></script>
+    <script src='../../Java Script/Minimized/input-si-unitlink.min.js' type='text/javascript'></script>
+    <title>BCA Life - BLESS, Health Questionnaire 1 Form</title>
+    <!-- JQUERY -->
+    <script>
+      /* INITIALIZE */
+      
+      var JSONLayoutFromURL = [];
+      var JSONLayoutRAWDummy = JSON.parse(JSONLayout);
+      var JSONLayoutSIDummy = JSONLayoutRAWDummy.si;
+      var JSONLayoutProductDummy = JSONFilterContentByKey(JSONLayoutSIDummy, "productKey", "unitlink", "productContent", "productState");
+      
+      var JSONFormulaFromURL = [];
+      var JSONFormulaRAWDummy = JSON.parse(JSONFormula);
+      var JSONFormulaSIDummy = JSONFormulaRAWDummy.si;
+      var JSONFormulaProductDummy = JSONFilterContentByKey(JSONFormulaSIDummy, "productKey", "unitlink", "productContent", "productState");
+      var JSONFormulaContentDummy = JSONFormulaProductDummy.formula;
+      
+      var JSONInputFromURL = [];
+      var JSONInputRAWDummy = JSON.parse(JSONInput);
+      var JSONInputProductDummy = JSONInputRAWDummy.si;
+      var JSONInputContentDummy = JSONFilterContentByKey(JSONInputProductDummy, "productKey", "unitlink", "productContent", "productState");
+      
+      var arrayInputSection = ["SelectFormulaConfiguratorInputResultSection", "SelectFormulaConfiguratorInputSection"];
+      var arrayInputKey = ["SelectFormulaConfiguratorInputResultKey", "SelectFormulaConfiguratorInputKey"];
+      
+      var JSONInputSection;
+      var JSONInputKey;
+      var JSONFormulaCurrent;
+      
+      
+      // READY
+      
+      $(document).ready(function()
+      {
+      	/* GET BY JSON */
+      
+      	JSONLayoutFromURL = getJSONFromURL("JSONLayout", JSONLayoutSIDummy);
+      	JSONFormulaFromURL = getJSONFromURL("JSONFormula", JSONFormulaSIDummy);
+      	JSONInputFromURL = getJSONFromURL("JSONInput", JSONInputContentDummy);
+      
+      	/* GENERATE VALUE */
+      
+      	generateFormulaDirectory(JSONFormulaFromURL, "GeneratedFormula");
+      	generateSelectOption("SelectFormulaConfiguratorParameterType", arrayObjectParameterType);
+      	generateSelectOption("SelectFormulaConfiguratorOperatorKey", arrayObjectOperatorKey);
+      	generateSelectOption("SelectFormulaConfiguratorFormulaState", arrayObjectStateKey);
+      
+      	/* USER INTERFACE */
+      
+      	$("main").css("border-top-color", "#D24B19");
+      	$("h1").text("Formula Configurator");
+      	setContentHeightBasedOnScreen("HeaderMain", "AsideDirectory");
+      	setContentHeightBasedOnScreen("HeaderMain", "MainContent");
+      	setupLayoutBasedOnScreen();
+      
+      	$(function()
+      	{
+      	    $("#FormulaContent").sortable(
+      	    {
+      	        update: function()
+      	        {
+      	           JSONFormulaFromURL[stringJSONKeyFormulaContent] = getFormulaContentFromLayout("FormulaContent");
+      	           formulaVerificator("FormulaContent");
+      	        }
+      	    });
+      
+      	    $("#FormulaContent").disableSelection();
+        	});
+      });
+    </script>
+  </head>
+  <!-- BODY -->
+  <body id="Configurator">
+    <!-- NAVIGATION -->
+    <nav>
+      <header>
+        <div class='NavigationHeaderContainer'>
+          <input class='ButtonNavigation ButtonNavigationClose PositionerLeft' onclick='navigationPanel()' type='button'>
+          <h2 class='PositionerLeft'>Navigation Panel</h2>
+        </div>
+        <img class='ImageProfile' src='../../Resource/Photo/photo_profile_andyphan.jpg'>
+        <br>
+        <span class='SpanProfileHeader' id='ProfileName'>Andy Phan</span>
+        <br>
+        <span class='SpanProfileDetail' id='ProfilePosition'>Administrator</span>
+        <br>
+        <div class='NavigationHeaderButton PositionerCenter'>
+          <a class='Clear' href=''>profile</a>
+          <a class='Clear' href=''>| setting</a>
+          <a class='Clear' href=''>| signout</a>
+        </div>
+      </header>
+      <div class='NavigationList' style='overflow-y: scroll;'>
+        <ul class='NavigationSection'>
+          <li>
+            Layout Configurator
+            <ul class='NavigationItem'>
+              <li>
+                <a class='Clear' href='../../Page/HTML/page_productconfigurator_layoutform.html'>
+                  <img src='../../Resource/Icon/Stanley/icon_form_primary.svg'>
+                  Form
+                </a>
+              </li>
+              <li>
+                <a class='Clear' href='../../Page/HTML/page_productconfigurator_layoutpdf.html'>
+                  <img src='../../Resource/Icon/Stanley/icon_pdf_primary.svg'>
+                  PDF
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Formula Configurator
+            <ul class='NavigationItem'>
+              <li>
+                <a class='Clear' href='../../Page/HTML/page_productconfigurator_formula.html'>
+                  <img src='../../Resource/Icon/Stanley/icon_formula_primary.svg'>
+                  Formula
+                </a>
+              </li>
+              <li>
+                <a class='Clear' href='../../Page/HTML/page_productconfigurator_constant.html'>
+                  <img src='../../Resource/Icon/Stanley/icon_constant_primary.svg'>
+                  Constant
+                </a>
+              </li>
+              <li>
+                <a class='Clear' href='../../Page/HTML/page_productconfigurator_table.html'>
+                  <img src='../../Resource/Icon/Stanley/icon_table_primary.svg'>
+                  Table
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- CONTENT -->
+    <div id="ContentContainer">
+      <div id="Content">
+        <!-- HEADER -->
+        <header id='HeaderMain'>
+          <input class='ButtonNavigation ButtonNavigationOpen PositionerLeft' onclick='navigationPanel()' type='button'>
+          <h1 class='PositionerLeft'>Formula Configurator</h1>
+          <input class='ButtonLogout PositionerRight' onclick='navigationSlide()' type='button'>
+        </header>
+        <!-- ASIDE -->
+        <aside id='AsideDirectory'>
+          <input id='TextDirectoryName' onchange="findDirectory('ListSection', this.id)" placeholder='find by formula name' type='text'>
+          <div class='GeneratedList' id='GeneratedFormula'></div>
+        </aside>
+        <!-- MAIN -->
+        <main id="MainContent">
+          <h2 class="PositionerLeft">
+            <span data-formula-key="" id="SpanHeaderFormula">Formula</span>
+          </h2>
+          <input class="ButtonAddSecondary ButtonDetached PositionerRight" onclick="popUpToggle('Curtain', 'PopUpParameter')" type="button" value="Add New Parameter">
+          <br>
+          <div class="FormulaMainContainer" id="FormulaContent"></div>
+          <form id="FormFormulaGeneral">
+            <fieldset id="FieldsetFormulaGeneral">
+              <table class="Full Borderless Spacing Margin">
+                <thead>
+                  <tr class="Center">
+                    <th>Formula</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorCoveredPerson">Covered Person</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorCoveredPerson">
+                        <option value="EntryAge">@EntryAge</option>
+                        <option value="PolAge">@PolAge</option>
+                        <option value="Smoker (NS, S)">@Smoker (NS, S)</option>
+                        <option value="Gender (M, F)">@Gender (M, F)</option>
+                      </select>
+                    </td>
+                    <td class="Center"></td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorBasicPlan">Basic Plan</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">@BSA</option>
+                        <option value="PolAge">@Term</option>
+                        <option value="Smoker (NS, S)">@Prem_Holiday</option>
+                        <option value="Gender (M, F)">@Premi%</option>
+                        <option value="EntryAge">@Premi%_Term</option>
+                        <option value="PolAge">@PremiMIL</option>
+                        <option value="Smoker (NS, S)">@PremiMIL_Term</option>
+                      </select>
+                    </td>
+                    <td class="Center"></td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorInputResultSection">Rider</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">Code</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@RSA</option>
+                        <option value="EntryAge">@Term</option>
+                        <option value="EntryAge">@Premi%</option>
+                        <option value="EntryAge">@Premi%_Term</option>
+                        <option value="EntryAge">@PremiMIL</option>
+                        <option value="EntryAge">@PremiMIL_Term</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorInputResultKey">Fund</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">Code</option>
+                        <option value="EntryAge">Investment Rate</option>
+                        <option value="EntryAge">Investment Return</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@InvRate_Single</option>
+                        <option value="EntryAge">@InvRate_Yearly</option>
+                        <option value="EntryAge">@InvRate_SemiAnn</option>
+                        <option value="EntryAge">@InvRate_Quarterly</option>
+                        <option value="EntryAge">@InvRate_Monthly</option>
+                        <option value="EntryAge">@High</option>
+                        <option value="EntryAge">@Medium</option>
+                        <option value="EntryAge">@Low</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorFormulaState">Master Table</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">Payment Mode</option>
+                        <option value="EntryAge">Channel</option>
+                        <option value="EntryAge">Occupation</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@OccClass</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorFormulaState">Expression</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">-</option>
+                        <option value="EntryAge">+</option>
+                        <option value="EntryAge">/</option>
+                        <option value="EntryAge">(</option>
+                        <option value="EntryAge">)</option>
+                        <option value="EntryAge">*</option>
+                        <option value="EntryAge">t-1</option>
+                        <option value="EntryAge">PV</option>
+                        <option value="EntryAge">FV</option>
+                        <option value="EntryAge">Min</option>
+                        <option value="EntryAge">Max</option>
+                      </select>
+                    </td>
+                    <td class="Center"></td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorFormulaState">Custom Formula</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value=""></option>
+                      </select>
+                    </td>
+                    <td class="Center"></td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">
+                      <textarea class="Full" id="AreaPotentialDiscussionActionDifferent" maxlength="200" onchange="filterInputWhitespace(this.id)" onpaste="return false;"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </fieldset>
+          </form>
+          <div class="ButtonContainer Right">
+            <input class="ButtonAddSecondary ButtonAttached" onclick="formulaSave(JSONFormulaFromURL, 'http://localhost:3883/InternalHandler.ashx?JSONFormula=')" type="button" value="Save">
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
