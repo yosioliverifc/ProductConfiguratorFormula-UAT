@@ -1,0 +1,189 @@
+!!! 5
+
+%html
+
+	/ HEAD
+
+	%head
+		= Haml::Engine.new(File.read("include_productconfigurator_formulaheader.haml")).render
+		%title BCA Life - BLESS, Health Questionnaire 1 Form
+
+		/ JQUERY
+
+		:javascript
+
+			/* INITIALIZE */
+
+			var JSONLayoutFromURL = [];
+			var JSONLayoutRAWDummy = JSON.parse(JSONLayout);
+			var JSONLayoutSIDummy = JSONLayoutRAWDummy.si;
+			var JSONLayoutProductDummy = JSONFilterContentByKey(JSONLayoutSIDummy, "productKey", "unitlink", "productContent", "productState");
+
+			var JSONFormulaFromURL = [];
+			var JSONFormulaRAWDummy = JSON.parse(JSONFormula);
+			var JSONFormulaSIDummy = JSONFormulaRAWDummy.si;
+			var JSONFormulaProductDummy = JSONFilterContentByKey(JSONFormulaSIDummy, "productKey", "unitlink", "productContent", "productState");
+			var JSONFormulaContentDummy = JSONFormulaProductDummy.formula;
+
+			var JSONInputFromURL = [];
+			var JSONInputRAWDummy = JSON.parse(JSONInput);
+			var JSONInputProductDummy = JSONInputRAWDummy.si;
+			var JSONInputContentDummy = JSONFilterContentByKey(JSONInputProductDummy, "productKey", "unitlink", "productContent", "productState");
+
+			var arrayInputSection = ["SelectFormulaConfiguratorInputResultSection", "SelectFormulaConfiguratorInputSection"];
+			var arrayInputKey = ["SelectFormulaConfiguratorInputResultKey", "SelectFormulaConfiguratorInputKey"];
+
+			var JSONInputSection;
+			var JSONInputKey;
+			var JSONFormulaCurrent;
+
+
+			// READY
+
+			$(document).ready(function()
+			{
+				/* GET BY JSON */
+
+				JSONLayoutFromURL = getJSONFromURL("JSONLayout", JSONLayoutSIDummy);
+				JSONFormulaFromURL = getJSONFromURL("JSONFormula", JSONFormulaSIDummy);
+				JSONInputFromURL = getJSONFromURL("JSONInput", JSONInputContentDummy);
+				JSONFormulaCurrent = JSONFormulaFromURL;
+
+				/* GENERATE VALUE */
+
+				generateConstantDirectory(JSONFormulaFromURL, "GeneratedFormula");
+				generateSelectOption("SelectConstantConfiguratorParameterType", arrayObjectParameterType);
+				generateSelectOption("SelectConstantConfiguratorConstantState", arrayObjectStateKey);
+
+				/* USER INTERFACE */
+
+				$("main").css("border-top-color", "#D24B19");
+				$("h1").text("Constant Configurator");
+				setContentHeightBasedOnScreen("HeaderMain", "AsideDirectory");
+				setContentHeightBasedOnScreen("HeaderMain", "MainContent");
+				setupLayoutBasedOnScreen();
+
+				/* $(function()
+				{
+				    $("#FormulaContent").sortable(
+				    {
+				        update: function()
+				        {
+				           JSONFormulaFromURL.formulaContent = getFormulaContentFromLayout("FormulaContent");
+				           formulaVerificator("FormulaContent");
+				        }
+				    });
+
+				    $("#FormulaContent").disableSelection();
+			  	}); */
+			});
+
+
+	/ BODY
+
+	%body#Configurator
+
+		/ NAVIGATION
+
+		= Haml::Engine.new(File.read("navigation_slide_general.haml")).render
+
+		/ CONTENT
+
+		%div#ContentContainer
+
+			%div#Content
+
+				/ HEADER
+
+				= Haml::Engine.new(File.read("header_productconfigurator_general.haml")).render
+
+				/ ASIDE
+
+				= Haml::Engine.new(File.read("aside_directory_formula.haml")).render
+
+				/ MAIN
+
+				%main#MainContent
+					%h2.PositionerLeft
+						%span#SpanHeaderProduct Product Name
+						%span#SpanHeaderSeparator | |
+						%span#SpanHeaderConstant Constant Name
+					%br
+
+					%form#FormFormulaGeneral
+						%fieldset#FieldsetFormulaGeneral.FieldsetContainer
+							%hgroup
+								%h3#TitleHeaderConstant Constant Name
+								%h4 Constant
+							%label{ :for => "TextConstantConfiguratorConstantKey" } Constant key
+							%input#TextConstantConfiguratorConstantKey.Long{ :type => "text", :readonly => "true" }
+							%br
+							%label{ :for => "SelectConstantConfiguratorConsstantText" } Constant text
+							%input#TextConstantConfiguratorConstantText.Long{ :type => "text" }
+							%br
+							%label{ :for => "SelectConstantConfiguratorConstantState" } Constant state
+							%select#SelectConstantConfiguratorConstantState.Long
+							%br
+
+					%div.ButtonContainerCenter
+						%input.ButtonAddSecondary.ButtonAttached{ :type => "button", :value => "Save", :onclick => "constantSave(JSONFormulaFromURL, 'http://localhost:3883/InternalHandler.ashx?JSONFormula=')" }
+						%input.ButtonCancelSecondary.ButtonAttached{ :type => "button", :value => "Cancel" }
+
+				/ CURTAIN
+
+				%div#Curtain
+
+					/ POPUP
+
+					%section#PopUpParameter.PopUp
+						%hgroup
+							%h3
+								Add New
+							%h4
+								Parameter
+						%form
+							%label{ :for => "SelectFormulaConfiguratorParameterType" } Parameter type
+							%select#SelectFormulaConfiguratorParameterType.Medium{ :onchange => "fieldsetChanger(this.id)" }
+
+							%fieldset#FieldsetInput.FieldsetOption
+								%hgroup
+									%h3
+										Input
+									%h4
+										Type
+								%label{ :for => "SelectFormulaConfiguratorInputSection" } Input section
+								%select#SelectFormulaConfiguratorInputSection.Medium{ :onchange => "generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputKey', JSONInputKey)" }
+								%br
+								%label{ :for => "SelectFormulaConfiguratorInputKey" } Input key
+								%select#SelectFormulaConfiguratorInputKey.Long
+
+							%fieldset#FieldsetOperator.FieldsetOption
+								%hgroup
+									%h3
+										Operator
+									%h4
+										Type
+								%label{ :for => "SelectFormulaConfiguratorOperatorKey" } Operator key
+								%select#SelectFormulaConfiguratorOperatorKey.Short
+
+							%fieldset#FieldsetConstant.FieldsetOption
+								%hgroup
+									%h3
+										Constant
+									%h4
+										Type
+								%label{ :for => "NumberFormulaConfiguratorParameterType" } Constant number
+								%input#NumberFormulaConfiguratorConstantNumber.Long{ :type => "number", :placeholder => "input static number" }
+
+							%div.PositionerCenter.Center
+								%input.ButtonAdd.ButtonAttached{ :type => "button", :value => "Save", :onclick => "formulaContentAdd(JSONFormulaCurrent, ['SelectFormulaConfiguratorInputKey', 'SelectFormulaConfiguratorOperatorKey', 'NumberFormulaConfiguratorConstantNumber'], 'PopUpFormula', 'FormulaContent')" }
+								%input.ButtonCancel.ButtonAttached{ :type => "button", :value => "Cancel", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
+
+				/ CURTAIN NO ITEM SELECTED
+
+				%div#CurtainNoItemSelected
+					%img{ :src => "../../Resource/Shape/Stanley/shape_info_noitemselected.svg" }
+
+			/ MAIN CURTAIN
+
+			%div#CurtainMain{ :onclick => "navigationPanel()" }

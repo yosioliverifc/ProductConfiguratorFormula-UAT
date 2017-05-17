@@ -1,0 +1,45 @@
+%nav
+	%header
+		%div.NavigationHeaderContainer
+			%input.ButtonNavigation.ButtonNavigationClose.PositionerLeft{ :type => "button", :onclick => "navigationPanel()" }
+			%h2.PositionerLeft Navigation Panel
+
+		%img.ImageProfile{ :src => "../../Resource/Photo/photo_profile_andyphan.jpg" }
+		%br
+		%span#ProfileName.SpanProfileHeader Andy Phan
+		%br
+		%span#ProfilePosition.SpanProfileDetail Administrator
+		%br
+		%div.NavigationHeaderButton.PositionerCenter
+			%a.Clear{ :href => "" } profile
+			%a.Clear{ :href => "" }  | setting
+			%a.Clear{ :href => "" }  | signout
+
+	%div.NavigationList{ :style => "overflow-y: scroll;" }
+		%ul.NavigationSection
+			%li
+				Layout Configurator
+				%ul.NavigationItem
+					%li
+						%a.Clear{ :href => "../../Page/HTML/page_productconfigurator_layoutform.html" }
+							%img{ :src => "../../Resource/Icon/Stanley/icon_form_primary.svg" }
+							Form
+					%li
+						%a.Clear{ :href => "../../Page/HTML/page_productconfigurator_layoutpdf.html" }
+							%img{ :src => "../../Resource/Icon/Stanley/icon_pdf_primary.svg" }
+							PDF
+			%li
+				Formula Configurator
+				%ul.NavigationItem
+					%li
+						%a.Clear{ :href => "../../Page/HTML/page_productconfigurator_formula.html" }
+							%img{ :src => "../../Resource/Icon/Stanley/icon_formula_primary.svg" }
+							Formula
+					%li
+						%a.Clear{ :href => "../../Page/HTML/page_productconfigurator_constant.html" }
+							%img{ :src => "../../Resource/Icon/Stanley/icon_constant_primary.svg" }
+							Constant
+					%li
+						%a.Clear{ :href => "../../Page/HTML/page_productconfigurator_table.html" }
+							%img{ :src => "../../Resource/Icon/Stanley/icon_table_primary.svg" }
+							Table

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <!-- HEAD -->
+  <head>
+    <!-- FOR DEVELOPMENT -->
+    <!-- FOR DEPLOYMENT -->
+    <!-- META DATA -->
+    <meta charset='utf-8'>
+    <meta content='BCA Life - BLESS' name='application-name'>
+    <meta content='BCA Life Electronic Submission.' name='description'>
+    <meta content='BCA Life Electronic Submission.' name='keywords'>
+    <meta content='BCA Life' name='author'>
+    <meta content='Ibrahim Aziz' name='designer'>
+    <meta content='Copyright 2016 BCA Life' name='copyright'>
+    <meta content='BCA Life Electronic Submission.' name='dcterms.description'>
+    <meta content='BCA Life' name='dcterms.creator'>
+    <meta content='BCA Life' name='dcterms.rightsHolder'>
+    <meta content='All rights reserved. No part of this document may be reproduced or transmitted in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without prior written permission from the Author, BCA Life.' name='dcterms.rights'>
+    <meta content='2016' name='dcterms.dateCopyrighted'>
+    <meta content='width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'>
+    <!-- FAVICON -->
+    <!-- %link{ :rel => "shortcut icon", :href => "#{urlResource}logo_favicon.ico" } -->
+    <!-- %link{ :rel => "shortcut icon", :href => "#{urlResource}logo_favicon.ico", :type => "image/x-icon" } -->
+    <!-- %link{ :rel => "icon", :href => "#{urlResource}logo_favicon.ico", :type => "image/x-icon" } -->
+    <!-- CSS -->
+    <link href='../../configurator/Style/CSS/productconfigurator-layout-general.css' id='csslayout' rel='stylesheet' type='text/css'>
+    <link href='../../configurator/Style/CSS/productconfigurator-font-general.css' id='cssfont' rel='stylesheet' type='text/css'>
+    <link href='../../configurator/Style/CSS/productconfigurator-input-general.css' id='cssinput' rel='stylesheet' type='text/css'>
+    <link href='../../configurator/Style/CSS/productconfigurator-link-general.css' id='csslink' rel='stylesheet' type='text/css'>
+    <link href='../../configurator/Style/CSS/bcalmpos-fontsize-medium.css' id='cssfontsize' rel='stylesheet' type='text/css'>
+    <link href='../../configurator/Style/CSS/productconfigurator-fontfamily-bpreplay.css' id='cssfontfamily' rel='stylesheet' type='text/css'>
+    <link href='../../configurator/Style/CSS/productconfigurator-theme-stanley-svg.css' id='csstheme' rel='stylesheet' type='text/css'>
+    <!-- %link{ :id => "cssresponsive", :href => "#{urlCSS}#{urlCSSSectionPrefix}-responsive-general.css", :rel => "stylesheet", :type => "text/css" } -->
+    <!-- JAVA SCRIPT -->
+    <!-- %script{ :type => "text/javascript", :src => "#{urlJavaScript}jquery.mobile-1.4.5.min.js" } -->
+    <script src='../../configurator/Java Script/Minimized/jquery-3.1.1.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/jquery-ui-1.12.1.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/jquery-migrate-1.4.1.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/ibrahimaziz-general.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/ibrahimaziz-productconfigurator-constant.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/ibrahimaziz-productconfigurator-back.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/ibrahimaziz-formulaconfigurator.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/ibrahimaziz-constantconfigurator.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/ibrahimaziz-tableconfigurator.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/layout-si-unitlink.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/formula-si-unitlink.min.js' type='text/javascript'></script>
+    <script src='../../configurator/Java Script/Minimized/input-si-unitlink.min.js' type='text/javascript'></script>
+    <title>BCA Life - BLESS, Health Questionnaire 1 Form</title>
+    <!-- JQUERY -->
+    <script>
+      /* INITIALIZE */
+      
+      var JSONFormulaFromURL = [];
+      var JSONFormulaRAWDummy = JSON.parse(JSONFormula);
+      var JSONFormulaProductDummy = JSONFormulaRAWDummy.si;
+      var JSONFormulaSectionDummy = JSONFilterContentByKey(JSONFormulaProductDummy, "productKey", "unitlink", "productContent", "productState");
+      var JSONFormulaContentDummy = JSONFormulaSectionDummy.formula;
+      
+      var JSONInputFromURL = [];
+      var JSONInputRAWDummy = JSON.parse(JSONInput);
+      var JSONInputProductDummy = JSONInputRAWDummy.si;
+      var JSONInputContentDummy = JSONFilterContentByKey(JSONInputProductDummy, "productKey", "unitlink", "productContent", "productState");
+      
+      var JSONFormulaCurrent;
+      var JSONInputKey;
+      var JSONInputSection;
+      var JSONInputResultSection;
+      var JSONInputResultKey;
+      
+      
+      // file:///Users/ibrahimaziztejokusumo/Documents/Project/Website/BCALMPOS-ProductConfigurator/Page/HTML/page_productconfigurator_formulatemporary.html?stringProductName=Unitlink&JSONFormula={"formulaKey":"FormulaBasicInsurancePremium","formulaText":"Premium","formulaContent":"NumberBasicInsurancePreferredPremium,+,NumberBasicInsuranceRegularTopUp,*,ConstantBasicInsurancePremium","inputKey":"NumberBasicInsurancePremium","formulaState":"true"}&JSONInput=[{"inputKey":"SelectFormulaConfiguratorInputSection","inputType":"select","inputPlaceholder":"Policyholder,Prospective Insured,Basic Insurance,Money Allocation,Additional Insurance","inputValue":"policyholder,prospectiveinsured,basicinsurance,moneyallocation,additionalinsurance","inputState":""},{"inputKey":"SelectFormulaConfiguratorInputKey","inputType":"select","inputPlaceholder":"NumberPolicyholderAge,RadioButtonPolicyholderSex,NumberProspectiveInsuredAge,RadioButtonProspectiveInsuredSex,NumberBasicInsurancePreferredPremium,NumberBasicInsuranceRegularTopUp,NumberBasicInsurancePremium,NumberMoneyAllocationAshmoreProtection,NumberMoneyAllocationAshmoreEquity,NumberAdditionalInsuranceSumAssured,NumberAdditionalInsuranceTerm","inputValue":"NumberPolicyholderAge,RadioButtonPolicyholderSex,NumberProspectiveInsuredAge,RadioButtonProspectiveInsuredSex,NumberBasicInsurancePreferredPremium,NumberBasicInsuranceRegularTopUp,NumberBasicInsurancePremium,NumberMoneyAllocationAshmoreProtection,NumberMoneyAllocationAshmoreEquity,NumberAdditionalInsuranceSumAssured,NumberAdditionalInsuranceTerm","inputState":""},{"inputKey":"SelectFormulaConfiguratorInputResultSection","inputType":"select","inputPlaceholder":"Policyholder,Prospective Insured,Basic Insurance,Money Allocation,Additional Insurance","inputValue":"policyholder,prospectiveinsured,basicinsurance,moneyallocation,additionalinsurance","inputState":""},{"inputKey":"SelectFormulaConfiguratorInputResultKey","inputType":"select","inputPlaceholder":"NumberPolicyholderAge,RadioButtonPolicyholderSex,NumberProspectiveInsuredAge,RadioButtonProspectiveInsuredSex,NumberBasicInsurancePreferredPremium,NumberBasicInsuranceRegularTopUp,NumberBasicInsurancePremium,NumberMoneyAllocationAshmoreProtection,NumberMoneyAllocationAshmoreEquity,NumberAdditionalInsuranceSumAssured,NumberAdditionalInsuranceTerm","inputValue":"NumberPolicyholderAge,RadioButtonPolicyholderSex,NumberProspectiveInsuredAge,RadioButtonProspectiveInsuredSex,NumberBasicInsurancePreferredPremium,NumberBasicInsuranceRegularTopUp,NumberBasicInsurancePremium,NumberMoneyAllocationAshmoreProtection,NumberMoneyAllocationAshmoreEquity,NumberAdditionalInsuranceSumAssured,NumberAdditionalInsuranceTerm","inputState":""},{"inputKey":"SelectFormulaConfiguratorOperatorKey","inputType":"select","inputPlaceholder":"+,-,*,/,(,)","inputValue":"+,-,*,/,(,)","inputState":""},{"inputKey":"SelectFormulaConfiguratorFormulaState","inputType":"select","inputPlaceholder":"Active,Not Active,Pending","inputValue":"true,false,pending","inputState":"required|true"}]
+      
+      // READY
+      
+      $(document).ready(function()
+      {
+      	/* GET BY JSON */
+      
+      	JSONFormulaFromURL = getJSONFromURL("JSONFormula", JSONFormulaContentDummy[2]);
+      	JSONInputFromURL = getJSONFromURL("JSONInput", JSONInputContentDummy);
+      
+      
+      	/* GENERATE VALUE */
+      
+      	console.log(arrayObjectParameterType);
+      	generateSelectOption("SelectFormulaConfiguratorParameterType", arrayObjectParameterType);
+      	generateSelectOptionByJSONInput(JSONInputFromURL);
+      	JSONInputSection = generateJSONSelectOptionByJSONInput(JSONInputFromURL, "SelectFormulaConfiguratorInputSection");
+      	JSONInputKey = generateJSONSelectOptionByJSONInput(JSONInputFromURL, "SelectFormulaConfiguratorInputKey");
+      	JSONInputResultSection = generateJSONSelectOptionByJSONInput(JSONInputFromURL, "SelectFormulaConfiguratorInputResultSection");
+      	JSONInputResultKey = generateJSONSelectOptionByJSONInput(JSONInputFromURL, "SelectFormulaConfiguratorInputResultKey");
+      
+      
+      	/* SETTER BY JSON */
+      
+      	setGeneralTextForm("TextFormulaConfiguratorFormulaKey", JSONFormulaFromURL.formulaKey);
+      	setGeneralTextForm("TextFormulaConfiguratorFormulaText", JSONFormulaFromURL.formulaText);
+      	setGeneralSelectForm("SelectFormulaConfiguratorInputResultSection", getInfix(releasePrefix(JSONFormulaFromURL.inputKey)).toLowerCase());
+      	setGeneralSelectForm("SelectFormulaConfiguratorInputResultKey", JSONFormulaFromURL.inputKey);
+      	setGeneralSelectForm("SelectFormulaConfiguratorFormulaState", JSONFormulaFromURL.formulaState);
+      	$("#SpanHeaderFormula, #TitleHeaderFormula").text(JSONFormulaFromURL.formulaText);
+      	$("#SpanHeaderProduct, #TitleHeaderProduct").text(getURLParameter().stringProductName);
+      	formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
+      
+      
+      	/* USER INTERFACE */
+      
+      	$("main").css("border-top-color", "#D24B19");
+      	$("h1").text("Formula Configurator");
+      	setContentHeightBasedOnScreen("HeaderMain", "MainContent");
+      	$("nav, #Content").css("height", $(window).height());
+      
+      	$(function()
+      	{
+      	    $("#FormulaContent").sortable(
+      	    {
+      	        update: function()
+      	        {
+      	           JSONFormulaFromURL.formulaContent = getFormulaContentFromLayout("FormulaContent");
+      	           formulaVerificator("FormulaContent");
+      	        }
+      	    });
+      
+      	    $("#FormulaContent").disableSelection();
+        	});
+      });
+    </script>
+  </head>
+  <!-- BODY -->
+  <body id='Configurator'>
+    <!-- NAVIGATION -->
+    <!-- CONTENT -->
+    <div id='ContentContainer'>
+      <div id='Content'>
+        <!-- HEADER -->
+        <header id='HeaderMain'>
+          <input class='ButtonNavigation ButtonNavigationOpen PositionerLeft' onclick='navigationPanel()' type='button'>
+          <h1 class='PositionerLeft'>Formula Configurator</h1>
+          <input class='ButtonLogout PositionerRight' onclick='navigationSlide()' type='button'>
+        </header>
+        <!-- ASIDE -->
+        <!-- MAIN -->
+        <main class='FullScreen' id='MainContent'>
+          <h2 class='PositionerLeft'>
+            <span data-product-key='' id='SpanHeaderProduct'>Unitlink</span>
+            <span id='SpanHeaderSeparator'>|</span>
+            <span data-formula-key='' id='SpanHeaderFormula'>Formula Name</span>
+          </h2>
+          <input class='ButtonAddSecondary ButtonDetached PositionerRight' onclick="popUpToggle('Curtain', 'PopUpParameter')" type='button' value='Add New Parameter'>
+          <br>
+          <div class='FormulaMainContainer' id='FormulaContent'></div>
+          <form id='FormFormulaGeneral'>
+            <fieldset class='Plain' id='FieldsetFormulaGeneral'>
+              <hgroup>
+                <h3 id='TitleHeaderFormula'>Formula Name</h3>
+                <h4>Formula</h4>
+              </hgroup>
+              <label for='TextFormulaConfiguratorFormulaKey'>Formula key</label>
+              <input class='Long' id='TextFormulaConfiguratorFormulaKey' readonly='true' type='text'>
+              <br>
+              <div style='display: none;'>
+                <label for='TextProductConfiguratorFormulaText'>Formula text</label>
+                <input class='Long' disabled='true' id='TextFormulaConfiguratorFormulaText' type='text'>
+                <br>
+                <label for='SelectFormulaConfiguratorInputResultSection'>Input result section</label>
+                <select class='Long' disabled='true' id='SelectFormulaConfiguratorInputResultSection' onchange="generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputResultKey', JSONInputResultKey)"></select>
+                <br>
+                <label for='SelectFormulaConfiguratorInputResultKey'>Input result key</label>
+                <select class='Long' disabled='true' id='SelectFormulaConfiguratorInputResultKey'></select>
+                <br>
+              </div>
+              <label for='SelectFormulaConfiguratorFormulaState'>Formula state</label>
+              <select class='Long' id='SelectFormulaConfiguratorFormulaState'></select>
+              <br>
+            </fieldset>
+          </form>
+          <div class='ButtonContainerCenter'>
+            <input class='ButtonAddSecondary ButtonAttached' onclick="formulaTemporarySave(JSONFormulaFromURL, 'http://mposws.azurewebsites.net/configurator/InternalHandler.ashx?JSONFormula=')" type='button' value='Save'>
+            <input class='ButtonCancelSecondary ButtonAttached' onclick="formulaTemporaryCancel(getJSONFromURL('JSONFormula', JSONFormulaContentDummy[2]), 'http://mposws.azurewebsites.net/configurator/InternalHandler.ashx?JSONFormula=')" type='button' value='Cancel'>
+          </div>
+        </main>
+        <!-- CURTAIN -->
+        <div id='Curtain'>
+          <!-- POPUP -->
+          <section class='PopUp' id='PopUpParameter'>
+            <hgroup>
+              <h3>
+                Add New
+              </h3>
+              <h4>
+                Parameter
+              </h4>
+            </hgroup>
+            <form>
+              <label for='SelectFormulaConfiguratorParameterType'>Parameter type</label>
+              <select class='Medium' id='SelectFormulaConfiguratorParameterType' onchange='fieldsetChanger(this.id)'></select>
+              <fieldset class='FieldsetOption' id='FieldsetInput'>
+                <hgroup>
+                  <h3>
+                    Input
+                  </h3>
+                  <h4>
+                    Type
+                  </h4>
+                </hgroup>
+                <label for='SelectFormulaConfiguratorInputSection'>Input section</label>
+                <select class='Medium' id='SelectFormulaConfiguratorInputSection' onchange="generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputKey', JSONInputKey)"></select>
+                <br>
+                <label for='SelectFormulaConfiguratorInputKey'>Input key</label>
+                <select class='Long' id='SelectFormulaConfiguratorInputKey'></select>
+              </fieldset>
+              <fieldset class='FieldsetOption' id='FieldsetOperator'>
+                <hgroup>
+                  <h3>
+                    Operator
+                  </h3>
+                  <h4>
+                    Type
+                  </h4>
+                </hgroup>
+                <label for='SelectFormulaConfiguratorOperatorKey'>Operator key</label>
+                <select class='Short' id='SelectFormulaConfiguratorOperatorKey'></select>
+              </fieldset>
+              <fieldset class='FieldsetOption' id='FieldsetConstant'>
+                <hgroup>
+                  <h3>
+                    Constant
+                  </h3>
+                  <h4>
+                    Type
+                  </h4>
+                </hgroup>
+                <label for='NumberFormulaConfiguratorParameterType'>Constant number</label>
+                <input class='Long' id='NumberFormulaConfiguratorConstantNumber' placeholder='input static number' type='number'>
+              </fieldset>
+              <div class='PositionerCenter Center'>
+                <input class='ButtonAdd ButtonAttached' onclick="formulaTemporaryContentAdd(JSONFormulaFromURL, ['SelectFormulaConfiguratorInputKey', 'SelectFormulaConfiguratorOperatorKey', 'NumberFormulaConfiguratorConstantNumber'], 'PopUpFormula', 'FormulaContent')" type='button' value='Save'>
+                <input class='ButtonCancel ButtonAttached' onclick="popUpToggle('Curtain', 'PopUpParameter')" type='button' value='Cancel'>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+      <!-- MAIN CURTAIN -->
+      <div id='CurtainMain' onclick='navigationPanel()'></div>
+    </div>
+  </body>
+</html>

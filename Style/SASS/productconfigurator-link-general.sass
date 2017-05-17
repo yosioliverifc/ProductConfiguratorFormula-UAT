@@ -1,0 +1,130 @@
+/* @charset "utf-8"; */
+/* CSS Document */
+
+
+// IMPORT
+
+@import productconfigurator-initialization-general
+
+
+/* LINK */
+
+/* Clear Hyperlink */
+
+a.Clear
+	text-decoration: none
+
+a.Clear:link
+	text-decoration: none
+
+a.Clear:visited
+	text-decoration: none
+
+a.Clear:hover
+	text-decoration: none
+
+a.Clear:active
+	text-decoration: none
+
+/* Underline Hyperlink */
+
+a.Underline
+	text-decoration: underline
+
+a.Underline:link
+	color: inherit
+	text-decoration: underline
+
+a.Underline:visited
+	color: inherit
+	text-decoration: underline
+
+a.Underlinek:hover
+	color: inherit
+	text-decoration: underline
+
+a.Underline:active
+	color: inherit
+	text-decoration: underline
+
+
+/* CONTAINER */
+
+.ButtonContainerCenter
+	position: relative
+	margin-top: $general_space_small
+	margin-left: auto
+	margin-right: auto
+	margin-bottom: $general_space_small
+	text-align: center
+
+
+/* BUTTON BY TYPE */
+
+.ButtonDetached, .ButtonAttached
+	min-width: $size_icon_mdpi / 2
+	height: $size_icon_mdpi / 2
+	padding-right: $size_icon_ldpi + $general_space_tiny
+	padding-left: $general_space_little
+	font-size: $fontsize_button_general
+	line-height: $size_lineheight_button
+	background-position: right
+	background-size: contain
+	background-repeat: no-repeat
+	vertical-align: middle
+	border: none
+	+borderRadius($radius_input_general)
+
+.ButtonDetached
+	padding-right: $size_icon_ldpi + $general_space_little
+
+.ButtonIcon
+	display: inline
+	margin-top: 0px
+	margin-left: $general_space_tiny
+	margin-right: $general_space_tiny
+	margin-bottom: 0px
+	padding: 0px
+	vertical-align: middle
+	+borderRadius($radius_input_general)
+
+li.ListProduct
+	.ButtonIcon
+		float: right
+		min-width: 24px
+		width: 24px
+		min-height: 24px
+		height: 24px
+li.ListSection
+	.ButtonIcon
+		float: right
+		min-width: 18px
+		width: 18px
+		min-height: 18px
+		height: 18px
+
+
+/* BUTTON BY IMAGE */
+
+.ButtonNavigation, .ButtonLogout
+	margin-top: 0px
+	margin-bottom: 0px
+	padding: 0px
+	min-width: $size_icon_mdpi
+	width: $size_icon_mdpi
+	min-height: $size_icon_mdpi
+	height: $size_icon_mdpi
+	background-size: $size_icon_mdpi / 2
+
+.ButtonNavigation, .ButtonLogout, .ButtonFormula
+	background-position: center
+	background-repeat: no-repeat
+	border: none
+
+.ButtonFormula
+	min-width: $size_icon_mdpi / 2
+	width: $size_icon_mdpi / 2
+	min-height: $size_icon_mdpi / 2
+	height: $size_icon_mdpi / 2
+	background-size: contain
+	+borderRadius($radius_input_general)

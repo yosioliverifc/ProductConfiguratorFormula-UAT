@@ -1,0 +1,144 @@
+/* @charset "utf-8"; */
+/* CSS Document */
+/* @charset "utf-8"; */
+/* CSS Document */
+/* @charset "utf-8"; */
+/* CSS Document */
+/* FUNCTION */
+/* ANIMATION */
+/* SPACE */
+/* SIZE */
+/* LAYOUT */
+/* RADIO */
+/* HEADER */
+/* SPAN */
+/* LABEL */
+/* INPUT */
+/* BUTTON */
+/* LIST */
+/* LINK */
+/* RESOURCE */
+/* TYPEFACE */
+/* INPUT TYPE TEXT */
+input, textarea, select {
+  margin: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  min-width: 180px;
+  font-size: 12pt;
+  vertical-align: middle;
+  line-height: 28px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+input {
+  min-height: 28px;
+}
+
+input[type="date"].Short {
+  min-width: 80px;
+  width: 80px;
+}
+
+input[type="date"].Small {
+  min-width: 130px;
+  width: 130px;
+}
+
+input[type="date"].Long {
+  min-width: 380px;
+  width: 380px;
+}
+
+select {
+  min-width: 200px;
+  height: 32px;
+  appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -webkit-appearance: none;
+}
+
+select.Short {
+  min-width: 120px;
+  width: 120px;
+}
+
+select.Small {
+  min-width: 170px;
+  width: 170px;
+}
+
+select.Long {
+  min-width: 420px;
+  width: 420px;
+}
+
+textarea {
+  min-height: 84px;
+}
+
+input:required, textarea:required {
+  background-image: url("../../Resource/Input/input_text_required.svg");
+  background-size: 3em 2em;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+input:disabled, textarea:disabled {
+  background-image: none;
+}
+
+select {
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+aside input {
+  margin: 20px;
+  width: 220px;
+}
+
+/* CHECKBOX */
+.RadioButton {
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  vertical-align: middle;
+  border-style: solid;
+  border-width: 1px;
+  display: inline-block;
+  border-radius: 50%;
+  -ms-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+.RadioButton input[type="radio"] {
+  display: none;
+}
+
+.RadioButton label {
+  float: left;
+  margin: 0px;
+  min-width: 90px;
+  padding-left: 5px;
+  padding-right: 5px;
+  line-height: 28px;
+  font-size: 12pt;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+.RadioButton label:last-of-type {
+  border-right: none;
+}

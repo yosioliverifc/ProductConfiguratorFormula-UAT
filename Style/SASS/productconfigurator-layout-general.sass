@@ -1,0 +1,318 @@
+/* @charset "utf-8"; */
+/* CSS Document */
+
+
+// IMPORT
+
+@import productconfigurator-initialization-general
+@import productconfigurator-setup
+
+
+// HEADER
+
+header
+	position: static
+	top: 0px
+	left: 0px
+	right: 0px
+	height: $size_height_header
+	padding-left: $general_space_medium
+	padding-right: $general_space_medium
+
+
+// ASIDE
+
+aside
+	position: absolute
+	top: $size_height_header
+	left: 0px
+	bottom: 0px
+	width: $size_width_directory
+	padding: 0px
+
+
+// NAVIGATION
+
+nav
+	position: absolute
+	left: -$size_width_navigation
+	top: 0px
+	bottom: 0px
+	width: $size_width_navigation
+	z-index: 5
+	+boxShadow(2px, 2px, 4px, 0px, rgba(0, 0, 0, 0.25))
+	header
+		height: 290px
+		padding-top: 0px
+		padding-left: $general_space_tiny
+		padding-right: $general_space_tiny
+		padding-bottom: 0px
+		text-align: center
+		.NavigationHeaderContainer
+			height: $size_height_double
+			.ButtonNavigation, h2
+				line-height: $size_lineheight_double
+				vertical-align: middle
+			.ButtonNavigation
+				height: $size_height_double
+		.ImageProfile
+			margin-top: $general_space_little
+			margin-bottom: $general_space_little
+			width: 100px
+			height: 100px
+			border-style: solid
+			border-width: $size_border_fat
+			display: inline-block
+			+boxShadow(2px, 2px, 4px, 0px, rgba(0, 0, 0, 0.25))
+			+borderRadius(50%)
+
+
+// MAIN
+
+#ContentContainer
+	perspective: 200px
+
+/* CONTENT */
+
+main.FullScreen
+	position: absolute
+	left: 0px
+
+main
+	position: absolute
+	top: $size_height_header
+	left: $size_width_directory
+	right: 0px
+	bottom: 0px
+	padding-top: $general_space_medium
+	padding-left: $general_space_large
+	padding-right: $general_space_large
+	padding-bottom: $general_space_medium
+	border-top-style: solid
+	border-top-width: $size_border_thick
+	overflow-y: scroll
+
+.FormulaMainContainer
+	margin-top: $general_space_small
+	margin-bottom: $general_space_small
+	padding-bottom: $general_space_little
+	width: 100%
+	min-height: 100px
+	overflow-x: scroll
+	white-space: nowrap
+
+form
+	fieldset.Plain
+		padding-left: 0px
+		padding-bottom: 0px
+		+boxShadow(0px, 0px, 0px, 0px, transparent)
+	fieldset:first-of-type, fieldset.FieldsetContainer:first-of-type
+		margin-top: 0px
+	fieldset, fieldset.FieldsetContainer
+		margin-top: $general_space_small
+		margin-bottom: $general_space_small
+		padding: $general_space_medium
+		vertical-align: middle
+		display: block
+		border: none
+		+borderRadius($radius_layout_general)
+		+boxShadow(2px, 2px, 4px, 0px, rgba(0, 0, 0, 0.25))
+		.QuestionContainer:first-of-type
+			margin-top: 0px
+		.QuestionContainer
+			margin-top: $general_space_small
+			margin-bottom: $general_space_small
+			padding: $general_space_medium
+			vertical-align: middle
+			display: block
+			border-style: solid
+			border-width: $size_border_thin
+			+borderRadius($radius_layout_general)
+			.InputContainer:first-of-type
+				margin-top: 0px
+			.InputContainer
+				margin-top: $general_space_small
+				margin-bottom: $general_space_small
+				padding: $general_space_medium
+				vertical-align: middle
+				display: block
+				+borderRadius($radius_layout_general)
+
+section.PopUp
+	margin-top: $general_space_small
+	margin-bottom: $general_space_small
+	padding: $general_space_medium
+	vertical-align: middle
+	display: none
+	border: none
+	+borderRadius($radius_layout_general)
+	+boxShadow(2px, 2px, 4px, 0px, rgba(0, 0, 0, 0.25))
+	form
+		fieldset, fieldset.FieldsetOption
+			margin-top: $general_space_small
+			margin-bottom: $general_space_small
+			padding: $general_space_medium
+			vertical-align: middle
+			display: block
+			border-style: solid
+			border-width: $size_border_thin
+			+borderRadius($radius_layout_general)
+			+boxShadow(0px, 0px, 0px, 0px, transparent)
+		fieldset.FieldsetOption
+			display: none
+
+
+/* POP UP */
+
+#Curtain, #CurtainMain, #CurtainNoItemSelected
+	position: fixed
+	top: 0px
+	left: 0px
+	right: 0px
+	bottom: 0px
+	padding-top: $general_space_enormous * 2
+	padding-left: $general_space_large
+	padding-right: $general_space_large
+	padding-bottom: $general_space_huge
+	overflow-y: auto
+	z-index: 2
+	display: none
+
+#CurtainNoItemSelected
+	top: $size_height_header + $size_border_thick
+	left: $size_width_directory
+	padding: $general_space_large
+	display: block
+
+.PopUp
+	padding: $general_space_medium
+	display: none
+	z-index: 3
+	+borderRadius(Container$radius_layout_general)
+
+.FieldsetOption
+	display: none
+
+
+/* BUBBLE */
+
+.FormulaContainer
+	margin-left: $general_space_little
+	margin-right: $general_space_little
+	padding: $general_space_little
+	text-align: center
+	vertical-align: middle
+	display: inline-block
+	+borderRadius($radius_layout_general)
+	+boxShadow(2px, 2px, 4px, 0px, rgba(0, 0, 0, 0.25))
+
+.FormulaContainer:first-child
+	margin-left: 0px
+
+
+// CONDITIONER
+
+/* FLEX */
+
+.ContainerFit, .ContainerLeft, .ContainerRight
+	display: flex
+	flex-wrap: nowrap
+	align-content: stretch
+	align-items: stretch
+	.Grow1
+		flex-grow: 1
+	.Grow2
+		flex-grow: 2
+	.Grow3
+		flex-grow: 3
+.ContainerFit
+	justify-content: space-between
+.ContainerLeft
+	justify-content: flex-start
+.ContainerRight
+	justify-content: flex-end
+
+/* SIZE */
+
+.Wrap
+	min-width: auto !important
+	width: auto !important
+	max-width: auto !important
+.Tiny
+	min-width: $size_width_tiny
+	width: $size_width_tiny
+.Short
+	min-width: $size_width_short
+	width: $size_width_short
+.Small
+	min-width: $size_width_medium * 0.75
+	width: $size_width_medium * 0.75
+.Medium
+	min-width: $size_width_medium
+	width: $size_width_medium
+.Long
+	min-width: $size_width_long
+	width: $size_width_long
+.Full
+	width: $size_width_full
+
+.TinyFix
+	width: $size_width_short
+	max-width: $size_width_short
+.ShortFix
+	width: $size_width_short
+	max-width: $size_width_short
+.SmallFix
+	width: $size_width_medium * 0.75
+	max-width: $size_width_medium * 0.75
+.MediumFix
+	width: $size_width_medium
+	max-width: $size_width_medium
+.LongFix
+	width: $size_width_long
+	max-width: $size_width_long
+.FullFix
+	width: $size_width_full
+	max-width: $size_width_full
+
+/* ALIGNEMNT */
+
+.Center
+	text-align: center
+.Left
+	text-align: left
+.Right
+	text-align: right
+.Justify
+	text-align: justify
+.Top
+	vertical-align: top
+.Middle
+	vertical-align: middle
+.Bottom
+	vertical-align: bottom
+
+/* SPACE */
+
+.Padding
+	margin: $general_space_tiny
+
+.IndentFirst
+	margin-left: $general_space_small
+
+.Margin
+	margin: $general_space_tiny
+
+/* POSITIONER */
+
+.PositionerRight
+	float: right
+	vertical-align: top
+
+.PositionerLeft
+	float: left
+	vertical-align: top
+
+.PositionerCenter
+	position: relative
+	margin: auto

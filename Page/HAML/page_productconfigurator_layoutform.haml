@@ -1,0 +1,105 @@
+!!! 5
+
+%html
+
+	/ HEAD
+
+	%head
+		= Haml::Engine.new(File.read("include_productconfigurator_layoutheader.haml")).render
+		%title BCA Life - BLESS, Health Questionnaire 1 Form
+
+		/ JQUERY
+
+		:javascript
+
+			/* INITIALIZATION */
+
+			var JSONLayoutParse = JSON.parse(JSONLayout);
+			var JSONLayoutSIParse = JSONLayoutParse.si;
+
+
+			// READY
+
+			$(document).ready(function()
+			{
+				/* USER INTERFACE */
+
+				$("main").css("border-top-color", "#D24B19");
+				$("h1").text("Layout Configurator");
+				setContentHeightBasedOnScreen("HeaderMain", "AsideDirectory");
+				setContentHeightBasedOnScreen("HeaderMain", "MainContent");
+				setupLayoutBasedOnScreen();
+
+				generateLayoutDirectory(JSONLayoutSIParse, "GeneratedLayout");
+			});
+
+
+	/ BODY
+
+	%body#Main
+
+		/ NAVIGATION
+
+		= Haml::Engine.new(File.read("navigation_slide_general.haml")).render
+
+		/ CONTENT
+
+		%div#ContentContainer
+
+			%div#Content
+
+				/ HEADER
+
+				= Haml::Engine.new(File.read("header_productconfigurator_general.haml")).render
+
+				/ ASIDE
+
+				= Haml::Engine.new(File.read("aside_directory_layout.haml")).render
+
+				/ MAIN
+
+				%main#MainContent
+					%h2.PositionerLeft
+						%span#SpanHeaderProduct Unitlink
+						%span#SpanHeaderSeparator | |
+						%span#SpanHeaderLayout Premium
+					%input.ButtonAddSecondary.ButtonDetached.PositionerRight{ :type => "button", :value => "Add New Parameter", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
+					%br
+
+					%form#LayoutContainer
+
+				/ CURTAIN
+
+				%div#Curtain
+
+					/ POPUP
+
+					%section#PopUpParameter.PopUp
+						%hgroup
+							%h3
+								Add New
+							%h4
+								Parameter
+						%form
+							%label{ :for => "SelectFormulaConfiguratorParameterType" } Parameter type
+							%select#SelectFormulaConfiguratorParameterType.Medium{ :onchange => "fieldsetChanger(this.id)" }
+
+							%fieldset#FieldsetInput.FieldsetOption
+								%hgroup
+									%h3
+										Input
+									%h4
+										Type
+								%label{ :for => "SelectFormulaConfiguratorInputSection" } Input section
+								%select#SelectFormulaConfiguratorInputSection.Medium{ :onchange => "generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputKey', arrayObjectInputKey)" }
+								%br
+								%label{ :for => "SelectFormulaConfiguratorInputKey" } Input key
+								%select#SelectFormulaConfiguratorInputKey.Long
+
+							%div.PositionerCenter.Center
+								%input.ButtonAdd.ButtonAttached{ :type => "button", :value => "Save", :onclick => "formulaContentAdd(['SelectFormulaConfiguratorInputKey', 'SelectFormulaConfiguratorOperatorKey', 'NumberFormulaConfiguratorConstantNumber'], JSONFormula, 'PopUpFormula', 'FormulaContent', 'SpanBubbleDetail')" }
+								%input.ButtonCancel.ButtonAttached{ :type => "button", :value => "Cancel", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
+
+		/ MAIN CURTAIN
+
+		%div#CurtainMain{ :onclick => "navigationPanel()" }

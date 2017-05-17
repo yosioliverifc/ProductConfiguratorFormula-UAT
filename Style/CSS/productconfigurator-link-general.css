@@ -1,0 +1,160 @@
+/* @charset "utf-8"; */
+/* CSS Document */
+/* @charset "utf-8"; */
+/* CSS Document */
+/* @charset "utf-8"; */
+/* CSS Document */
+/* FUNCTION */
+/* ANIMATION */
+/* SPACE */
+/* SIZE */
+/* LAYOUT */
+/* RADIO */
+/* HEADER */
+/* SPAN */
+/* LABEL */
+/* INPUT */
+/* BUTTON */
+/* LIST */
+/* LINK */
+/* RESOURCE */
+/* TYPEFACE */
+/* LINK */
+/* Clear Hyperlink */
+a.Clear {
+  text-decoration: none;
+}
+
+a.Clear:link {
+  text-decoration: none;
+}
+
+a.Clear:visited {
+  text-decoration: none;
+}
+
+a.Clear:hover {
+  text-decoration: none;
+}
+
+a.Clear:active {
+  text-decoration: none;
+}
+
+/* Underline Hyperlink */
+a.Underline {
+  text-decoration: underline;
+}
+
+a.Underline:link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+a.Underline:visited {
+  color: inherit;
+  text-decoration: underline;
+}
+
+a.Underlinek:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+a.Underline:active {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* CONTAINER */
+.ButtonContainerCenter {
+  position: relative;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* BUTTON BY TYPE */
+.ButtonDetached, .ButtonAttached {
+  min-width: 24px;
+  height: 24px;
+  padding-right: 41px;
+  padding-left: 10px;
+  font-size: 12pt;
+  line-height: 28px;
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  border: none;
+  border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.ButtonDetached {
+  padding-right: 46px;
+}
+
+.ButtonIcon {
+  display: inline;
+  margin-top: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 0px;
+  padding: 0px;
+  vertical-align: middle;
+  border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+li.ListProduct .ButtonIcon {
+  float: right;
+  min-width: 24px;
+  width: 24px;
+  min-height: 24px;
+  height: 24px;
+}
+
+li.ListSection .ButtonIcon {
+  float: right;
+  min-width: 18px;
+  width: 18px;
+  min-height: 18px;
+  height: 18px;
+}
+
+/* BUTTON BY IMAGE */
+.ButtonNavigation, .ButtonLogout {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+  min-width: 48px;
+  width: 48px;
+  min-height: 48px;
+  height: 48px;
+  background-size: 24px;
+}
+
+.ButtonNavigation, .ButtonLogout, .ButtonFormula {
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.ButtonFormula {
+  min-width: 24px;
+  width: 24px;
+  min-height: 24px;
+  height: 24px;
+  background-size: contain;
+  border-radius: 4px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}

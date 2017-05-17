@@ -1,0 +1,315 @@
+/* @charset "utf-8"; */
+/* CSS Document */
+/* THEME */
+/* INPUT BACKGROUND */
+/* INPUT BORDER */
+/* INPUT FONT */
+/* BUTTON FONT */
+/* BUTTON BACKGROUND */
+/* BUTTON BORDER */
+/* @charset "utf-8"; */
+/* CSS Document */
+/* @charset "utf-8"; */
+/* CSS Document */
+/* FUNCTION */
+/* ANIMATION */
+/* SPACE */
+/* SIZE */
+/* LAYOUT */
+/* RADIO */
+/* HEADER */
+/* SPAN */
+/* LABEL */
+/* INPUT */
+/* BUTTON */
+/* LIST */
+/* LINK */
+/* RESOURCE */
+/* TYPEFACE */
+/* SEMANTIC ELEMENTS */
+body {
+  background-color: #2D2D2D;
+}
+
+body main {
+  background-color: #F0F0F0;
+}
+
+/* NEUTRALIZATION */
+h1, h2, h3, h4, h5, h6, p, mark, ol, ul, li {
+  background-color: transparent;
+}
+
+/* HEADER */
+header {
+  background-color: #0F0F0F;
+}
+
+/* ASIDE */
+aside {
+  background-color: #1E1E1E;
+}
+
+/* CONTENT */
+form {
+  background-color: transparent;
+}
+
+form fieldset.Plain {
+  background-color: transparent;
+}
+
+form fieldset.FieldsetContainer, form fieldset {
+  background-color: #FFFFFF;
+}
+
+form fieldset.FieldsetContainer .QuestionContainer, form fieldset .QuestionContainer {
+  border-color: #D2D2D2;
+}
+
+form fieldset.FieldsetContainer .QuestionContainer .InputContainer, form fieldset .QuestionContainer .InputContainer {
+  background-color: #D2D2D2;
+}
+
+section.PopUp form {
+  background-color: transparent;
+}
+
+section.PopUp form fieldset, section.PopUp form fieldset.FieldsetOption {
+  background-color: transparent;
+  border-color: #D2D2D2;
+}
+
+/* FORMULA */
+.FormulaContainer {
+  background-color: #FFFFFF;
+}
+
+.FormulaContainer .SpanFormulaHeader {
+  color: #5A5A5A;
+}
+
+.FormulaContainer .SpanFormulaDetail {
+  color: #787878;
+}
+
+/* POP UP */
+#Curtain {
+  background-color: rgba(15, 15, 15, 0.4);
+}
+
+#CurtainNoItemSelected {
+  background-color: #F0F0F0;
+}
+
+#CurtainMain {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.PopUp {
+  background-color: #FFFFFF;
+}
+
+/* HEADER */
+header h1 {
+  color: #FFFFFF;
+}
+
+h2 {
+  color: #5A5A5A;
+}
+
+/* ASIDE */
+aside ul, aside li {
+  color: #D2D2D2;
+}
+
+/* NAVIGATION */
+nav {
+  background-color: #1E1E1E;
+}
+
+nav header {
+  background-color: #0F0F0F;
+}
+
+nav header .NavigationHeaderContainer h2 {
+  color: #FFFFFF;
+}
+
+nav header .SpanProfileHeader {
+  color: #FFFFFF;
+}
+
+nav header .SpanProfileDetail {
+  color: #D2D2D2;
+}
+
+nav header .NavigationHeaderButton a {
+  color: #969696;
+}
+
+nav header .ImageProfile {
+  border-color: #2D2D2D;
+}
+
+nav .NavigationList ul.NavigationSection li {
+  color: #787878;
+}
+
+nav .NavigationList ul.NavigationSection li ul.NavigationItem li a {
+  color: #B4B4B4;
+}
+
+/* MAIN */
+form fieldset hgroup h3, form fieldset.FieldsetContainer hgroup h3 {
+  color: #5A5A5A;
+}
+
+form fieldset hgroup h4, form fieldset.FieldsetContainer hgroup h4 {
+  color: #787878;
+}
+
+form fieldset .QuestionContainer, form fieldset.FieldsetContainer .QuestionContainer {
+  border-color: #E1E1E1;
+}
+
+form fieldset .QuestionContainer hgroup h4, form fieldset.FieldsetContainer .QuestionContainer hgroup h4 {
+  color: #5A5A5A;
+}
+
+form fieldset .QuestionContainer hgroup h5, form fieldset.FieldsetContainer .QuestionContainer hgroup h5 {
+  color: #787878;
+}
+
+form fieldset .QuestionContainer .InputContainer, form fieldset.FieldsetContainer .QuestionContainer .InputContainer {
+  background-color: #F0F0F0;
+}
+
+form fieldset .QuestionContainer .InputContainer hgroup h5, form fieldset.FieldsetContainer .QuestionContainer .InputContainer hgroup h5 {
+  color: #5A5A5A;
+}
+
+form fieldset .QuestionContainer .InputContainer hgroup h6, form fieldset.FieldsetContainer .QuestionContainer .InputContainer hgroup h6 {
+  color: #787878;
+}
+
+form label {
+  color: #5A5A5A;
+}
+
+input:not([type=button]):enabled, textarea:enabled, select:enabled {
+  background-color: transparent;
+  border-color: #E1E1E1;
+  color: #5A5A5A;
+}
+
+input:not([type=button]):read-only, textarea:read-only {
+  background-color: #F0F0F0;
+  border-color: none;
+  color: #5A5A5A;
+}
+
+input:not([type=button]):disabled, textarea:disabled, select:disabled {
+  background-color: #E1E1E1;
+  border-color: none;
+  color: #5A5A5A;
+}
+
+select:enabled {
+  background-image: url("../../Resource/Input/Stanley/input_select_enable.svg");
+}
+
+select:hover {
+  background-image: url("../../Resource/Input/Stanley/input_select_press.svg");
+}
+
+select:disabled {
+  background-image: url("../../Resource/Input/Stanley/input_select_disable.svg");
+}
+
+aside input:not([type=button]):enabled {
+  background-color: #2D2D2D;
+  border-color: transparent;
+  color: #D2D2D2;
+}
+
+/* BUTTON TYPE */
+.ButtonDetached {
+  background-color: transparent;
+}
+
+.ButtonAttached {
+  color: #D2D2D2;
+  background-color: #2D2D2D;
+}
+
+aside .ButtonIcon {
+  background-color: #2D2D2D;
+  border: none;
+}
+
+/* BUTTON IMAGE */
+.ButtonNavigationOpen {
+  background-image: url("../../Resource/Icon/Stanley/icon_navigation_open.svg");
+}
+
+.ButtonNavigationClose {
+  background-image: url("../../Resource/Icon/Stanley/icon_navigation_close.svg");
+}
+
+.ButtonLogout {
+  background-image: url("../../Resource/Icon/Stanley/icon_logout_primary.svg");
+}
+
+.ButtonFormula, .ButtonNavigation, .ButtonLogout {
+  background-color: transparent;
+}
+
+.ButtonAddPrimary {
+  background-image: url("../../Resource/Icon/Stanley/icon_add_primary.svg");
+}
+
+.ButtonCancelPrimary {
+  background-image: url("../../Resource/Icon/Stanley/icon_cancel_primary.svg");
+}
+
+.ButtonResetPrimary {
+  background-image: url("../../Resource/Icon/Stanley/icon_reset_primary.svg");
+}
+
+.ButtonEditPrimary {
+  background-image: url("../../Resource/Icon/Stanley/icon_edit_primary.svg");
+}
+
+.ButtonDeletePrimary {
+  background-image: url("../../Resource/Icon/Stanley/icon_delete_primary.svg");
+}
+
+.ButtonSearchPrimary {
+  background-image: url("../../Resource/Icon/Stanley/icon_search_primary.svg");
+}
+
+.ButtonAddSecondary {
+  background-image: url("../../Resource/Icon/Stanley/icon_add_secondary.svg");
+}
+
+.ButtonCancelSecondary {
+  background-image: url("../../Resource/Icon/Stanley/icon_cancel_secondary.svg");
+}
+
+.ButtonResetSecondary {
+  background-image: url("../../Resource/Icon/Stanley/icon_reset_secondary.svg");
+}
+
+.ButtonEditSecondary {
+  background-image: url("../../Resource/Icon/Stanley/icon_edit_secondary.svg");
+}
+
+.ButtonDeleteSecondary {
+  background-image: url("../../Resource/Icon/Stanley/icon_delete_secondary.svg");
+}
+
+.ButtonSearchSecondary {
+  background-image: url("../../Resource/Icon/Stanley/icon_search_secondary.svg");
+}

@@ -1,0 +1,195 @@
+!!! 5
+
+%html
+
+	/ HEAD
+
+	%head
+		= Haml::Engine.new(File.read("include_productconfigurator_formulaheader.haml")).render
+		%title BCA Life - BLESS, Health Questionnaire 1 Form
+
+		/ JQUERY
+
+		:javascript
+
+			/* INITIALIZE */
+
+			var arrayObjectParameterType = [];
+			arrayObjectParameterType.push({ value: stringStateNotSelected, text: "Please Select" });
+			arrayObjectParameterType.push({ value: "FieldsetInput", text: "Input" });
+			arrayObjectParameterType.push({ value: "FieldsetOperator", text: "Operator" });
+			arrayObjectParameterType.push({ value: "FieldsetConstant", text: "Constant" });
+			arrayObjectParameterType.push({ value: "FieldsetCondition", text: "Condition" });
+
+			var arrayObjectFormulaState = [];
+			arrayObjectFormulaState.push({ value: stringStateNotSelected, text: "Please Select" });
+			arrayObjectFormulaState.push({ value: "true", text: "Active" });
+			arrayObjectFormulaState.push({ value: "false", text: "Not Active" });
+
+			var JSONLayoutFromURL = [];
+			var JSONLayoutRAWDummy = JSON.parse(JSONLayout);
+			var JSONLayoutSIDummy = JSONLayoutRAWDummy.si;
+			var JSONLayoutProductDummy = JSONFilterContentByKey(JSONLayoutSIDummy, "productKey", "unitlink", "productContent", "productState");
+
+			var JSONFormulaFromURL = [];
+			var JSONFormulaRAWDummy = JSON.parse(JSONFormula);
+			var JSONFormulaSIDummy = JSONFormulaRAWDummy.si;
+			var JSONFormulaProductDummy = JSONFilterContentByKey(JSONFormulaSIDummy, "productKey", "unitlink", "productContent", "productState");
+			var JSONFormulaContentDummy = JSONFormulaProductDummy.formula;
+
+			var JSONInputFromURL = [];
+			var JSONInputRAWDummy = JSON.parse(JSONInput);
+			var JSONInputProductDummy = JSONInputRAWDummy.si;
+			var JSONInputContentDummy = JSONFilterContentByKey(JSONInputProductDummy, "productKey", "unitlink", "productContent", "productState");
+
+			var arrayInputSection = ["SelectTableConfiguratorInputResultSection", "SelectTableConfiguratorInputSection"];
+			var arrayInputKey = ["SelectTableConfiguratorInputResultKey", "SelectTableConfiguratorInputKey"];
+
+			var JSONInputSection;
+			var JSONInputKey;
+			var JSONFormulaCurrent;
+
+
+			// READY
+
+			$(document).ready(function()
+			{
+				/* GET BY JSON */
+
+				JSONLayoutFromURL = getJSONFromURL("JSONLayout", JSONLayoutSIDummy);
+				JSONFormulaFromURL = getJSONFromURL("JSONFormula", JSONFormulaSIDummy);
+				JSONInputFromURL = getJSONFromURL("JSONInput", JSONInputContentDummy);
+				JSONFormulaCurrent = JSONFormulaFromURL;
+
+				/* GENERATE VALUE */
+
+				generateTableDirectory(JSONFormulaFromURL, "GeneratedFormula");
+				generateSelectOption("SelectTableConfiguratorTableState", arrayObjectStateKey);
+
+				/* USER INTERFACE */
+
+				$("main").css("border-top-color", "#D24B19");
+				$("h1").text("Table Configurator");
+				setContentHeightBasedOnScreen("HeaderMain", "AsideDirectory");
+				setContentHeightBasedOnScreen("HeaderMain", "MainContent");
+				setupLayoutBasedOnScreen();
+
+				/* $(function()
+				{
+				    $("#FormulaContent").sortable(
+				    {
+				        update: function()
+				        {
+				           JSONFormulaFromURL.formulaContent = getFormulaContentFromLayout("FormulaContent");
+				           formulaVerificator("FormulaContent");
+				        }
+				    });
+
+				    $("#FormulaContent").disableSelection();
+			  	}); */
+			});
+
+
+	/ BODY
+
+	%body#Configurator
+
+		/ NAVIGATION
+
+		= Haml::Engine.new(File.read("navigation_slide_general.haml")).render
+
+		/ CONTENT
+
+		%div#ContentContainer
+
+			%div#Content
+
+				/ HEADER
+
+				= Haml::Engine.new(File.read("header_productconfigurator_general.haml")).render
+
+				/ ASIDE
+
+				= Haml::Engine.new(File.read("aside_directory_formula.haml")).render
+
+				/ MAIN
+
+				%main#MainContent
+					%h2.PositionerLeft
+						%span#SpanHeaderProduct Product Name
+						%span#SpanHeaderSeparator | |
+						%span#SpanHeaderTable Table Name
+					%br
+
+					%form#FormFormulaGeneral
+						%fieldset#FieldsetFormulaGeneral.FieldsetContainer
+							%hgroup
+								%h3#TitleHeaderTable Table Name
+								%h4 Constant
+							%label{ :for => "TextTableConfiguratorTableKey" } Table key
+							%input#TextTableConfiguratorTableKey.Long{ :type => "text", :readonly => "true" }
+							%br
+							%label{ :for => "SelectTableConfiguratorTableText" } Table text
+							%input#TextTableConfiguratorTableText.Long{ :type => "text" }
+							%br
+							%label{ :for => "SelectTableConfiguratorTableState" } Table state
+							%select#SelectTableConfiguratorTableState.Long
+							%br
+
+					%div.ButtonContainerCenter
+						%input.ButtonAddSecondary.ButtonAttached{ :type => "button", :value => "Save", :onclick => "tableSave(JSONFormulaFromURL, 'http://localhost:3883/InternalHandler.ashx?JSONFormula=')" }
+						%input.ButtonCancelSecondary.ButtonAttached{ :type => "button", :value => "Cancel" }
+
+				/ CURTAIN
+
+				%div#Curtain
+
+					/ POPUP
+
+					%section#PopUpParameter.PopUp
+						%hgroup
+							%h3
+								Add New
+							%h4
+								Parameter
+						%form
+							%label{ :for => "SelectFormulaConfiguratorParameterType" } Parameter type
+							%select#SelectFormulaConfiguratorParameterType.Medium{ :onchange => "fieldsetChanger(this.id)" }
+
+							%fieldset#FieldsetInput.FieldsetOption
+								%hgroup
+									%h3
+										Input
+									%h4
+										Type
+								%label{ :for => "SelectFormulaConfiguratorInputSection" } Input section
+								%select#SelectFormulaConfiguratorInputSection.Medium{ :onchange => "generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputKey', JSONInputKey)" }
+								%br
+								%label{ :for => "SelectFormulaConfiguratorInputKey" } Input key
+								%select#SelectFormulaConfiguratorInputKey.Long
+
+							%fieldset#FieldsetOperator.FieldsetOption
+								%hgroup
+									%h3
+										Operator
+									%h4
+										Type
+								%label{ :for => "SelectFormulaConfiguratorOperatorKey" } Operator key
+								%select#SelectFormulaConfiguratorOperatorKey.Short
+
+							%fieldset#FieldsetConstant.FieldsetOption
+								%hgroup
+									%h3
+										Constant
+									%h4
+										Type
+								%label{ :for => "NumberFormulaConfiguratorParameterType" } Constant number
+								%input#NumberFormulaConfiguratorConstantNumber.Long{ :type => "number", :placeholder => "input static number" }
+
+							%div.PositionerCenter.Center
+								%input.ButtonAdd.ButtonAttached{ :type => "button", :value => "Save", :onclick => "formulaContentAdd(JSONFormulaCurrent, ['SelectFormulaConfiguratorInputKey', 'SelectFormulaConfiguratorOperatorKey', 'NumberFormulaConfiguratorConstantNumber'], 'PopUpFormula', 'FormulaContent')" }
+								%input.ButtonCancel.ButtonAttached{ :type => "button", :value => "Cancel", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
+
+		/ MAIN CURTAIN
+
+		%div#CurtainMain{ :onclick => "navigationPanel()" }

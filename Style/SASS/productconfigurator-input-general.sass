@@ -1,0 +1,124 @@
+/* @charset "utf-8"; */
+/* CSS Document */
+
+
+// IMPORT
+
+@import productconfigurator-initialization-general
+
+
+/* INPUT TYPE TEXT */
+
+input, textarea, select
+    margin: $general_space_tiny
+    padding-right: $general_space_little
+    padding-left: $general_space_little
+    min-width: $size_width_medium - ($general_space_little * 2)
+    font-size: $fontsize_input_general
+    vertical-align: middle
+    line-height: $size_height_single
+    border-style: solid
+    border-width: $size_border_thin
+    +borderRadius($radius_input_general)
+
+input
+    min-height: $size_height_single
+
+input[type="date"].Short
+    min-width: $size_width_short - ($general_space_little * 2)
+    width: $size_width_short - ($general_space_little * 2)
+
+input[type="date"].Small
+    min-width: ($size_width_medium * 0.75) - ($general_space_little * 2)
+    width: ($size_width_medium * 0.75) - ($general_space_little * 2)
+
+input[type="date"].Long
+    min-width: $size_width_long - ($general_space_little * 2)
+    width: $size_width_long - ($general_space_little * 2)
+
+select
+    min-width: $size_width_medium
+    height: $size_height_single + ($general_space_thin * 2)
+    +appearance(none)
+
+select.Short
+    min-width: $size_width_short + ($general_space_little * 2)
+    width: $size_width_short + ($general_space_little * 2)
+
+select.Small
+    min-width: ($size_width_medium * 0.75) + ($general_space_little * 2)
+    width: ($size_width_medium * 0.75) + ($general_space_little * 2)
+
+select.Long
+    min-width: $size_width_long + ($general_space_little * 2)
+    width: $size_width_long + ($general_space_little * 2)
+
+textarea
+    min-height: $size_height_tripple
+
+input:required, textarea:required
+    background-image: url("../../Resource/Input/input_text_required.svg")
+    background-size: 3em 2em
+    background-position: right top
+    background-repeat: no-repeat
+
+input:disabled, textarea:disabled
+    background-image: none
+
+select
+    background-position: right
+    background-size: contain
+    background-repeat: no-repeat
+
+aside
+    input
+        margin: $general_space_medium
+        width: $size_width_directory - ($general_space_medium * 2) - ($general_space_little * 2)
+
+
+/* CHECKBOX */
+
+.RadioButton
+    margin-left: $general_space_tiny
+    margin-right: $general_space_tiny
+    height: $size_height_single
+    line-height: $size_height_single
+    text-align: center
+    vertical-align: middle
+    border-style: solid
+    border-width: $size_border_thin
+    display: inline-block
+    +borderRadius($radius_input_radiobutton)
+    input[type="radio"]
+        display: none
+    label
+        float: left
+        margin: 0px
+        min-width: $size_width_short - ($general_space_tiny * 2)
+        padding-left: $general_space_tiny
+        padding-right: $general_space_tiny
+        line-height: $size_height_single
+        font-size: $fontsize_input_general
+        border-right-style: solid
+        border-right-width: $size_border_thin
+    label:last-of-type
+        border-right: none
+
+// /* CHECKBOX */
+
+// .Checkbox
+//     text-align: center
+//     display: inline-block
+//     input[type="checkbox"]
+//         display: none
+//     .Separator
+//         width: 2px
+//         height: 12px
+//         display: inline-block
+//     label.Checkbox
+//         padding-top: $input_padding_edge
+//         padding-right: $input_padding_side
+//         padding-left: $input_padding_side
+//         padding-bottom: $input_padding_edge
+//         font-size: $fontsize_input_radiobutton
+//         +BorderRadius($general_borderradius_thick)

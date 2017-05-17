@@ -1,0 +1,162 @@
+/* @charset "utf-8"; */
+/* CSS Document */
+
+
+// IMPORT
+
+@import productconfigurator-initialization-general
+
+
+// HEADER
+
+header
+	h1
+		font-size: $fontsize_header_title
+		line-height: $size_lineheight_header
+
+
+// ASIDE
+
+aside
+	ul.DirectoryProduct
+		margin: 0px
+		padding: 0px
+		list-style-type: none
+		li.ListProduct:before, li.ListSection:before
+			position: relative
+			margin-right: $general_space_little
+			width: 12px
+			height: 12px
+			background-color: #D24B19
+			content: ""
+			vertical-align: middle
+			display: inline-block
+			+borderRadius(50%)
+		li.ListProduct
+			margin: 0px
+			height: 24px
+			padding-top: 6px
+			padding-left: $general_space_medium
+			padding-right: $general_space_medium
+			padding-bottom: 6px
+			font-size: $fontsize_list_header
+			line-height: 24px
+			ul.DirectorySection
+				margin-top: $general_space_tiny
+				margin-left: 0px
+				margin-right: 0px
+				margin-bottom: $general_space_tiny
+				padding: 0px
+				list-style-type: none
+				li.ListSection:before
+					background-color: #FF7846
+					+borderRadius(0)
+				li.ListSection
+					margin-left: $general_space_medium
+					height: 18px
+					padding-top: 5px
+					padding-left: 0px
+					padding-right: 0px
+					padding-bottom: 5px
+					font-size: $fontsize_list_detail
+					line-height: 18px
+
+
+// NAVIGATION
+
+nav
+	header
+		.NavigationHeaderContainer
+			h2
+				font-size: $fontsize_header_title
+				text-align: left
+		.SpanProfileHeader
+			font-size: $fontsize_span_profileheader
+		.SpanProfileName
+			font-size: $fontsize_span_profiledetail
+		.NavigationHeaderButton
+			margin-top: $general_space_little
+			margin-bottom: $general_space_little
+			a
+				font-size: $fontsize_link_navigationbutton
+	.NavigationList
+		padding-left: $general_space_medium
+		padding-right: $general_space_medium
+		ul.NavigationSection
+			margin: 0px
+			padding: 0px
+			list-style-type: none
+			li
+				margin-top: $general_space_small
+				margin-left: 0px
+				margin-right: 0px
+				margin-bottom: $general_space_small
+				line-height: $size_icon_mdpi
+				list-style-type: none
+				font-size: $fontsize_list_navigationsection
+				ul.NavigationItem
+					margin: 0px
+					padding: 0px
+					list-style-type: none
+					li
+						margin: 0px
+						line-height: $size_icon_mdpi
+						list-style-type: none
+						font-size: $fontsize_list_navigationitem
+						img
+							float: left
+							margin-right: $general_space_medium
+							height: $size_icon_mdpi
+							width: $size_icon_ldpi
+							background-size: $size_icon_ldpi
+							background-position: center
+							background-repeat: no-repeat
+							border: none
+
+
+// MAIN
+
+main
+	h2
+		span
+			font-size: $fontsize_header_title
+			line-height: $size_lineheight_header
+
+form
+	fieldset
+		hgroup
+			margin-top: $general_space_little
+			margin-bottom: $general_space_little
+			h3
+				font-size: $fontsize_header_title
+			h4
+				font-size: $fontsize_header_description
+		hgroup:first-of-type
+			margin-top: 0px
+		label
+			margin: $general_space_tiny
+			min-height: $size_height_single
+			min-width: $size_width_medium
+			line-height: $size_lineheight_single
+			font-size: $fontsize_label_field
+			vertical-align: middle
+			display: inline-block
+
+.PopUp
+	hgroup
+		text-align: left
+		h3
+			font-size: $fontsize_header_title
+		h4
+			font-size: $fontsize_header_description
+
+
+// BUBBLE
+
+.FormulaContainer
+	.SpanFormulaHeader, .SpanFormulaDetail
+		display: block
+	.SpanFormulaHeader
+		font-size: $fontsize_span_bubbleheader
+	.SpanFormulaDetail
+		font-size: $fontsize_span_bubbledetail

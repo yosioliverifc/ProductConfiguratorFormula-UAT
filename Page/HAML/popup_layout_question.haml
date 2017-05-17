@@ -1,0 +1,72 @@
+!!! 5
+
+%html
+
+	/ HEAD
+
+	%head
+		= Haml::Engine.new(File.read("include_siform_header.haml")).render
+		%title BCA Life - BLESS, Health Questionnaire 1 Form
+
+		/ JQUERY
+
+		:javascript
+
+			// READY
+
+			$(document).ready(function()
+			{
+				var JSONConfigUnitlinkParse = JSON.parse(JSONConfigUnitlink);
+				var JSONConstantUnitlinkParse = JSON.parse(JSONConstantUnitlink);
+				var JSONValueUnitlinkParse = JSON.parse(JSONValueUnitlink);
+				var arrayRiderHeader = ["RiderDescription", "SumAssured", "Term", "Premium", "ExtraPremiPerMille", "ExtraPremiPercent", "ExtraPremiPerMilleTerm", "ExtraPremiPercentTerm"];
+
+				// GENERATOR
+
+				$("input[name='RadioButtonSection']").change(function()
+				{
+					// FROM PRODUCT CONFIGURATOR
+
+					formGenerator(eval("JSONConfigUnitlinkParse.si.unitlink." + $(this).val()), "MainForm");
+					formulaGenerator(JSONConfigUnitlinkParse.si.unitlink.formula, JSONConstantUnitlinkParse.si.unitlink);
+
+					// SETTER
+
+					setGeneralPagePDF(eval("JSONValueUnitlinkParse.si.unitlink." + $(this).val()));
+					setTable(arrayRiderHeader, eval("JSONValueUnitlinkParse.si.unitlink." + $(this).val()), "TableRider");
+					formulaTableGenerator(JSONConfigUnitlinkParse.si.unitlink.formula, JSONConstantUnitlinkParse.si.unitlink);
+				});
+
+				// GETTER
+
+				$(stringKres + "buttonSubmit").click(function()
+				{
+					var JSONInput = [];
+
+					getGeneralPageForm(JSONInput);
+					previewJSONInput(JSONInput);
+				});
+			});
+
+
+	/ BODY
+
+	%body#Main
+
+		%input#buttonSubmit{ :type => "button", :value => "done" }
+
+		%div.RadioButton
+			%input#RadioButtonPolicyholder{ :type => "radio", :value => "policyholder", :name => "RadioButtonSection", :checked => "true" }
+			%label{ :for => "RadioButtonPolicyholder" } Policyholder
+			%input#RadioButtonProspectiveInsured{ :type => "radio", :value => "prospectiveinsured", :name => "RadioButtonSection" }
+			%label{ :for => "RadioButtonProspectiveInsured" } Prospective Insured
+			%input#RadioButtonBasicInsurance{ :type => "radio", :value => "basicinsurance", :name => "RadioButtonSection" }
+			%label{ :for => "RadioButtonBasicInsurance" } Basic Insurance
+			%input#RadioButtonMoneyAllocation{ :type => "radio", :value => "moneyallocation", :name => "RadioButtonSection" }
+			%label{ :for => "RadioButtonMoneyAllocation" } Money Allocation
+			%input#RadioButtonAdditionalInsurance{ :type => "radio", :value => "additionalinsurance", :name => "RadioButtonSection" }
+			%label{ :for => "RadioButtonAdditionalInsurance" } Additional Insurance
+
+		/ MAIN
+
+		%main#MainForm
