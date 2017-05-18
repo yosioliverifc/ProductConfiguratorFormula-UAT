@@ -86,8 +86,10 @@
       
       	/* GENERATE VALUE */
       
-      	console.log(arrayObjectParameterType);
-      	generateSelectOption("SelectFormulaConfiguratorParameterType", arrayObjectParameterType);
+      	// console.log(arrayObjectCoveredPerson);
+      	// generateSelectOption("SelectFormulaConfiguratorParameterType", arrayObjectParameterType);
+      	generateSelectOption("SelectProductConfiguratorCoveredPerson", arrayObjectCoveredPerson);
+      	generateSelectOption("SelectProductConfiguratorBasicPlan", arrayObjectBasicPlan);
       	generateSelectOptionByJSONInput(JSONInputFromURL);
       	JSONInputSection = generateJSONSelectOptionByJSONInput(JSONInputFromURL, "SelectFormulaConfiguratorInputSection");
       	JSONInputKey = generateJSONSelectOptionByJSONInput(JSONInputFromURL, "SelectFormulaConfiguratorInputKey");
@@ -104,7 +106,7 @@
       	setGeneralSelectForm("SelectFormulaConfiguratorFormulaState", JSONFormulaFromURL.formulaState);
       	$("#SpanHeaderFormula, #TitleHeaderFormula").text(JSONFormulaFromURL.formulaText);
       	$("#SpanHeaderProduct, #TitleHeaderProduct").text(getURLParameter().stringProductName);
-      	formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
+      	// formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
       
       
       	/* USER INTERFACE */
@@ -138,9 +140,9 @@
       <div id="Content">
         <!-- HEADER -->
         <header id='HeaderMain'>
-          <input class='ButtonNavigation ButtonNavigationOpen PositionerLeft' onclick='navigationPanel()' type='button'>
+          <!-- / %input.ButtonNavigation.ButtonNavigationOpen.PositionerLeft{ :type => "button", :onclick => "navigationPanel()" } -->
           <h1 class='PositionerLeft'>Formula Configurator</h1>
-          <input class='ButtonLogout PositionerRight' onclick='navigationSlide()' type='button'>
+          <!-- / %input.ButtonLogout.PositionerRight{ :type => "button", :onclick => "navigationSlide()" } -->
         </header>
         <!-- ASIDE -->
         <!-- MAIN -->
@@ -150,100 +152,157 @@
             <span id="SpanHeaderSeparator">|</span>
             <span data-formula-key="" id="SpanHeaderFormula">Formula Name</span>
           </h2>
-          <input class="ButtonAddSecondary ButtonDetached PositionerRight" onclick="popUpToggle('Curtain', 'PopUpParameter')" type="button" value="Add New Parameter">
+          <!-- / %input.ButtonAddSecondary.ButtonDetached.PositionerRight{ :type => "button", :value => "Add New Parameter", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" } -->
           <br>
-          <div class="FormulaMainContainer" id="FormulaContent"></div>
+          <!-- / %div#FormulaContent.FormulaMainContainer -->
           <form id="FormFormulaGeneral">
-            <fieldset class="Plain" id="FieldsetFormulaGeneral">
-              <hgroup>
-                <h3 id="TitleHeaderFormula">Formula Name</h3>
-                <h4>Formula</h4>
-              </hgroup>
-              <label for="TextFormulaConfiguratorFormulaKey">Formula key</label>
-              <input class="Long" id="TextFormulaConfiguratorFormulaKey" readonly="true" type="text">
-              <br>
-              <div style="display: none;">
-                <label for="TextProductConfiguratorFormulaText">Formula text</label>
-                <input class="Long" disabled="true" id="TextFormulaConfiguratorFormulaText" type="text">
-                <br>
-                <label for="SelectFormulaConfiguratorInputResultSection">Input result section</label>
-                <select class="Long" disabled="true" id="SelectFormulaConfiguratorInputResultSection" onchange="generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputResultKey', JSONInputResultKey)"></select>
-                <br>
-                <label for="SelectFormulaConfiguratorInputResultKey">Input result key</label>
-                <select class="Long" disabled="true" id="SelectFormulaConfiguratorInputResultKey"></select>
-                <br>
-              </div>
-              <label for="SelectFormulaConfiguratorFormulaState">Formula state</label>
-              <select class="Long" id="SelectFormulaConfiguratorFormulaState"></select>
-              <br>
+            <fieldset id="FieldsetFormulaGeneral">
+              <table class="Full Borderless Spacing Margin">
+                <thead>
+                  <tr class="Center">
+                    <th class="PositionerLeft">Formula</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorCoveredPerson">Covered Person</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorCoveredPerson"></select>
+                    </td>
+                    <td class="Center"></td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorBasicPlan">Basic Plan</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan"></select>
+                    </td>
+                    <td class="Center"></td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorInputResultSection">Rider</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">Code</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@RSA</option>
+                        <option value="EntryAge">@Term</option>
+                        <option value="EntryAge">@Premi%</option>
+                        <option value="EntryAge">@Premi%_Term</option>
+                        <option value="EntryAge">@PremiMIL</option>
+                        <option value="EntryAge">@PremiMIL_Term</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorInputResultKey">Fund</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">Code</option>
+                        <option value="EntryAge">Investment Rate</option>
+                        <option value="EntryAge">Investment Return</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@InvRate_Single</option>
+                        <option value="EntryAge">@InvRate_Yearly</option>
+                        <option value="EntryAge">@InvRate_SemiAnn</option>
+                        <option value="EntryAge">@InvRate_Quarterly</option>
+                        <option value="EntryAge">@InvRate_Monthly</option>
+                        <option value="EntryAge">@High</option>
+                        <option value="EntryAge">@Medium</option>
+                        <option value="EntryAge">@Low</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorFormulaState">Master Table</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">Payment Mode</option>
+                        <option value="EntryAge">Channel</option>
+                        <option value="EntryAge">Occupation</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@Code</option>
+                        <option value="EntryAge">@OccClass</option>
+                      </select>
+                    </td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectFormulaConfiguratorOperatorKey">Expression</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectFormulaConfiguratorOperatorKey"></select>
+                    </td>
+                    <td class="Center"></td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="SelectProductConfiguratorFormulaState">Rates ID</label>
+                    </td>
+                    <td class="Center">
+                      <select class="Medium" id="SelectProductConfiguratorBasicPlan">
+                        <option value=""></option>
+                      </select>
+                    </td>
+                    <td class="Center"></td>
+                    <td class="Center">
+                      <input class="ButtonPrimary" id="ButtonSaveMyChoice" type="button" value="Insert">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">
+                      <textarea class="Full" id="AreaPotentialDiscussionActionDifferent" onchange="filterInputWhitespace(this.id)" onpaste="return false;" style="width: 1200px;"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </fieldset>
           </form>
-          <div class="ButtonContainerCenter">
+          <div class="ButtonContainer Right">
             <input class="ButtonAddSecondary ButtonAttached" onclick="formulaTemporarySave(JSONFormulaFromURL, 'http://localhost:3883/InternalHandler.ashx?JSONFormula=')" type="button" value="Save">
             <input class="ButtonCancelSecondary ButtonAttached" onclick="formulaTemporaryCancel(getJSONFromURL('JSONFormula', JSONFormulaContentDummy[2]), 'http://localhost:3883/InternalHandler.ashx?JSONFormula=')" type="button" value="Cancel">
           </div>
         </main>
-        <!-- CURTAIN -->
-        <div id="Curtain">
-          <!-- POPUP -->
-          <section class="PopUp" id="PopUpParameter">
-            <hgroup>
-              <h3>
-                Add New
-              </h3>
-              <h4>
-                Parameter
-              </h4>
-            </hgroup>
-            <form>
-              <label for="SelectFormulaConfiguratorParameterType">Parameter type</label>
-              <select class="Medium" id="SelectFormulaConfiguratorParameterType" onchange="fieldsetChanger(this.id)"></select>
-              <fieldset class="FieldsetOption" id="FieldsetInput">
-                <hgroup>
-                  <h3>
-                    Input
-                  </h3>
-                  <h4>
-                    Type
-                  </h4>
-                </hgroup>
-                <label for="SelectFormulaConfiguratorInputSection">Input section</label>
-                <select class="Medium" id="SelectFormulaConfiguratorInputSection" onchange="generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputKey', JSONInputKey)"></select>
-                <br>
-                <label for="SelectFormulaConfiguratorInputKey">Input key</label>
-                <select class="Long" id="SelectFormulaConfiguratorInputKey"></select>
-              </fieldset>
-              <fieldset class="FieldsetOption" id="FieldsetOperator">
-                <hgroup>
-                  <h3>
-                    Operator
-                  </h3>
-                  <h4>
-                    Type
-                  </h4>
-                </hgroup>
-                <label for="SelectFormulaConfiguratorOperatorKey">Operator key</label>
-                <select class="Short" id="SelectFormulaConfiguratorOperatorKey"></select>
-              </fieldset>
-              <fieldset class="FieldsetOption" id="FieldsetConstant">
-                <hgroup>
-                  <h3>
-                    Constant
-                  </h3>
-                  <h4>
-                    Type
-                  </h4>
-                </hgroup>
-                <label for="NumberFormulaConfiguratorParameterType">Constant number</label>
-                <input class="Long" id="NumberFormulaConfiguratorConstantNumber" placeholder="input static number" type="number">
-              </fieldset>
-              <div class="PositionerCenter Center">
-                <input class="ButtonAdd ButtonAttached" onclick="formulaTemporaryContentAdd(JSONFormulaFromURL, ['SelectFormulaConfiguratorInputKey', 'SelectFormulaConfiguratorOperatorKey', 'NumberFormulaConfiguratorConstantNumber'], 'PopUpFormula', 'FormulaContent')" type="button" value="Save">
-                <input class="ButtonCancel ButtonAttached" onclick="popUpToggle('Curtain', 'PopUpParameter')" type="button" value="Cancel">
-              </div>
-            </form>
-          </section>
-        </div>
       </div>
       <!-- MAIN CURTAIN -->
       <div id="CurtainMain" onclick="navigationPanel()"></div>

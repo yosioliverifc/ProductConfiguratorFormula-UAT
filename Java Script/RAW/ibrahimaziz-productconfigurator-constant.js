@@ -9,6 +9,16 @@
 
 /* INPUT DEFAULT */
 
+var arrayObjectCoveredPerson = [];
+arrayObjectCoveredPerson.push({ value: "EntryAge", text: "EntryAge" });
+arrayObjectCoveredPerson.push({ value: "PolAge", text: "PolAge" });
+arrayObjectCoveredPerson.push({ value: "Smoker", text: "Smoker (N,S)" });
+arrayObjectCoveredPerson.push({ value: "Gender", text: "Gender (M,F)" });
+
+var arrayObjectBasicPlan = [];
+arrayObjectBasicPlan.push({ value: "BSA", text: "BSA" });
+arrayObjectBasicPlan.push({ value: "Term", text: "Term" });
+
 var arrayObjectParameterType = [];
 arrayObjectParameterType.push({ value: stringStateNotSelected, text: "Please Select" });
 arrayObjectParameterType.push({ value: "FieldsetInput", text: "Input" });

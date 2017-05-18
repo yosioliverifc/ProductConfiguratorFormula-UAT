@@ -49,8 +49,10 @@
 
 				/* GENERATE VALUE */
 
-				console.log(arrayObjectParameterType);
-				generateSelectOption("SelectFormulaConfiguratorParameterType", arrayObjectParameterType);
+				// console.log(arrayObjectCoveredPerson);
+				// generateSelectOption("SelectFormulaConfiguratorParameterType", arrayObjectParameterType);
+				generateSelectOption("SelectProductConfiguratorCoveredPerson", arrayObjectCoveredPerson);
+				generateSelectOption("SelectProductConfiguratorBasicPlan", arrayObjectBasicPlan);
 				generateSelectOptionByJSONInput(JSONInputFromURL);
 				JSONInputSection = generateJSONSelectOptionByJSONInput(JSONInputFromURL, "SelectFormulaConfiguratorInputSection");
 				JSONInputKey = generateJSONSelectOptionByJSONInput(JSONInputFromURL, "SelectFormulaConfiguratorInputKey");
@@ -67,7 +69,7 @@
 				setGeneralSelectForm("SelectFormulaConfiguratorFormulaState", JSONFormulaFromURL.formulaState);
 				$("#SpanHeaderFormula, #TitleHeaderFormula").text(JSONFormulaFromURL.formulaText);
 				$("#SpanHeaderProduct, #TitleHeaderProduct").text(getURLParameter().stringProductName);
-				formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
+				// formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
 
 
 				/* USER INTERFACE */
@@ -122,86 +124,114 @@
 						%span#SpanHeaderProduct{ "data-product-key" => "" } Unitlink
 						%span#SpanHeaderSeparator | |
 						%span#SpanHeaderFormula{ "data-formula-key" => "" } Formula Name
-					%input.ButtonAddSecondary.ButtonDetached.PositionerRight{ :type => "button", :value => "Add New Parameter", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
+					// %input.ButtonAddSecondary.ButtonDetached.PositionerRight{ :type => "button", :value => "Add New Parameter", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
 					%br
 
-					%div#FormulaContent.FormulaMainContainer
+					// %div#FormulaContent.FormulaMainContainer
 
 					%form#FormFormulaGeneral
-						%fieldset#FieldsetFormulaGeneral.Plain
-							%hgroup
-								%h3#TitleHeaderFormula Formula Name
-								%h4 Formula
-							%label{ :for => "TextFormulaConfiguratorFormulaKey" } Formula key
-							%input#TextFormulaConfiguratorFormulaKey.Long{ :type => "text", :readonly => "true" }
-							%br
-							%div{ :style => "display: none;" }
-								%label{ :for => "TextProductConfiguratorFormulaText" } Formula text
-								%input#TextFormulaConfiguratorFormulaText.Long{ :type => "text", :disabled => "true" }
-								%br
-								%label{ :for => "SelectFormulaConfiguratorInputResultSection" } Input result section
-								%select#SelectFormulaConfiguratorInputResultSection.Long{ :onchange => "generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputResultKey', JSONInputResultKey)", :disabled => "true" }
-								%br
-								%label{ :for => "SelectFormulaConfiguratorInputResultKey" } Input result key
-								%select#SelectFormulaConfiguratorInputResultKey.Long{ :disabled => "true" }
-								%br
-							%label{ :for => "SelectFormulaConfiguratorFormulaState" } Formula state
-							%select#SelectFormulaConfiguratorFormulaState.Long
-							%br
+						%fieldset#FieldsetFormulaGeneral
+							%table.Full.Borderless.Spacing.Margin
+								%thead
+									%tr.Center
+										%th.PositionerLeft Formula 
+								%tbody
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorCoveredPerson" } Covered Person 
+										%td.Center
+											%select#SelectProductConfiguratorCoveredPerson.Medium
+					
+										%td.Center
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorBasicPlan" } Basic Plan
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												
+										%td.Center
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorInputResultSection" } Rider
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  Code
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @RSA
+												%option{ :value => "EntryAge" }  @Term
+												%option{ :value => "EntryAge" }  @Premi%
+												%option{ :value => "EntryAge" }  @Premi%_Term
+												%option{ :value => "EntryAge" }  @PremiMIL
+												%option{ :value => "EntryAge" }  @PremiMIL_Term
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorInputResultKey" } Fund
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  Code
+												%option{ :value => "EntryAge" }  Investment Rate
+												%option{ :value => "EntryAge" }  Investment Return
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @InvRate_Single
+												%option{ :value => "EntryAge" }  @InvRate_Yearly
+												%option{ :value => "EntryAge" }  @InvRate_SemiAnn
+												%option{ :value => "EntryAge" }  @InvRate_Quarterly
+												%option{ :value => "EntryAge" }  @InvRate_Monthly
+												%option{ :value => "EntryAge" }  @High
+												%option{ :value => "EntryAge" }  @Medium
+												%option{ :value => "EntryAge" }  @Low
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorFormulaState" } Master Table
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  Payment Mode
+												%option{ :value => "EntryAge" }  Channel
+												%option{ :value => "EntryAge" }  Occupation
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @Code
+												%option{ :value => "EntryAge" }  @OccClass
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectFormulaConfiguratorOperatorKey" } Expression
+										%td.Center
+											%select#SelectFormulaConfiguratorOperatorKey.Medium
 
-					%div.ButtonContainerCenter
+										%td.Center
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td
+											%label{ :for => "SelectProductConfiguratorFormulaState" } Rates ID
+										%td.Center
+											%select#SelectProductConfiguratorBasicPlan.Medium
+												%option{ :value => "" }   
+										%td.Center		
+										%td.Center
+											%input#ButtonSaveMyChoice.ButtonPrimary{ :type => "button", :value => "Insert" }
+									%tr
+										%td{ :colspan => "4" }
+											%textarea#AreaPotentialDiscussionActionDifferent.Full{ :onpaste => "return false;", :onchange => "filterInputWhitespace(this.id)", :style => "width: 1200px;" }
+					%div.ButtonContainer.Right
 						%input.ButtonAddSecondary.ButtonAttached{ :type => "button", :value => "Save", :onclick => "formulaTemporarySave(JSONFormulaFromURL, 'http://localhost:3883/InternalHandler.ashx?JSONFormula=')" }
 						%input.ButtonCancelSecondary.ButtonAttached{ :type => "button", :value => "Cancel", :onclick => "formulaTemporaryCancel(getJSONFromURL('JSONFormula', JSONFormulaContentDummy[2]), 'http://localhost:3883/InternalHandler.ashx?JSONFormula=')" }
-
-				/ CURTAIN
-
-				%div#Curtain
-
-					/ POPUP
-
-					%section#PopUpParameter.PopUp
-						%hgroup
-							%h3
-								Add New
-							%h4
-								Parameter
-						%form
-							%label{ :for => "SelectFormulaConfiguratorParameterType" } Parameter type
-							%select#SelectFormulaConfiguratorParameterType.Medium{ :onchange => "fieldsetChanger(this.id)" }
-
-							%fieldset#FieldsetInput.FieldsetOption
-								%hgroup
-									%h3
-										Input
-									%h4
-										Type
-								%label{ :for => "SelectFormulaConfiguratorInputSection" } Input section
-								%select#SelectFormulaConfiguratorInputSection.Medium{ :onchange => "generateSelectOptionByInfix(this.id, 'SelectFormulaConfiguratorInputKey', JSONInputKey)" }
-								%br
-								%label{ :for => "SelectFormulaConfiguratorInputKey" } Input key
-								%select#SelectFormulaConfiguratorInputKey.Long
-
-							%fieldset#FieldsetOperator.FieldsetOption
-								%hgroup
-									%h3
-										Operator
-									%h4
-										Type
-								%label{ :for => "SelectFormulaConfiguratorOperatorKey" } Operator key
-								%select#SelectFormulaConfiguratorOperatorKey.Short
-
-							%fieldset#FieldsetConstant.FieldsetOption
-								%hgroup
-									%h3
-										Constant
-									%h4
-										Type
-								%label{ :for => "NumberFormulaConfiguratorParameterType" } Constant number
-								%input#NumberFormulaConfiguratorConstantNumber.Long{ :type => "number", :placeholder => "input static number" }
-
-							%div.PositionerCenter.Center
-								%input.ButtonAdd.ButtonAttached{ :type => "button", :value => "Save", :onclick => "formulaTemporaryContentAdd(JSONFormulaFromURL, ['SelectFormulaConfiguratorInputKey', 'SelectFormulaConfiguratorOperatorKey', 'NumberFormulaConfiguratorConstantNumber'], 'PopUpFormula', 'FormulaContent')" }
-								%input.ButtonCancel.ButtonAttached{ :type => "button", :value => "Cancel", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
 
 			/ MAIN CURTAIN
 
