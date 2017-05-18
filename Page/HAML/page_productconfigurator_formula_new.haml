@@ -67,7 +67,7 @@
 				setGeneralSelectForm("SelectFormulaConfiguratorFormulaState", JSONFormulaFromURL.formulaState);
 				$("#SpanHeaderFormula, #TitleHeaderFormula").text(JSONFormulaFromURL.formulaText);
 				$("#SpanHeaderProduct, #TitleHeaderProduct").text(getURLParameter().stringProductName);
-				// formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
+				formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
 
 
 				/* USER INTERFACE */
@@ -122,17 +122,17 @@
 						%span#SpanHeaderProduct{ "data-product-key" => "" } Unitlink
 						%span#SpanHeaderSeparator | |
 						%span#SpanHeaderFormula{ "data-formula-key" => "" } Formula Name
-					// %input.ButtonAddSecondary.ButtonDetached.PositionerRight{ :type => "button", :value => "Add New Parameter", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
+					%input.ButtonAddSecondary.ButtonDetached.PositionerRight{ :type => "button", :value => "Add New Parameter", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" }
 					%br
 
 					%div#FormulaContent.FormulaMainContainer
 
 					%form#FormFormulaGeneral
-						%fieldset#FieldsetFormulaGeneral
+						%fieldset#FieldsetFormulaGeneral.Plain
 							%hgroup
 								%h3#TitleHeaderFormula Formula Name
 								%h4 Formula
-							%label{ :for => "TextFormulaConfiguratorFormulaKey" } Covered Person
+							%label{ :for => "TextFormulaConfiguratorFormulaKey" } Formula key
 							%input#TextFormulaConfiguratorFormulaKey.Long{ :type => "text", :readonly => "true" }
 							%br
 							%div{ :style => "display: none;" }
