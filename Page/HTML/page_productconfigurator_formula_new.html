@@ -104,7 +104,7 @@
       	setGeneralSelectForm("SelectFormulaConfiguratorFormulaState", JSONFormulaFromURL.formulaState);
       	$("#SpanHeaderFormula, #TitleHeaderFormula").text(JSONFormulaFromURL.formulaText);
       	$("#SpanHeaderProduct, #TitleHeaderProduct").text(getURLParameter().stringProductName);
-      	formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
+      	// formulaTemporaryContentGenerator(JSONFormulaFromURL.formulaContent, "FormulaContent");
       
       
       	/* USER INTERFACE */
@@ -138,9 +138,9 @@
       <div id="Content">
         <!-- HEADER -->
         <header id='HeaderMain'>
-          <input class='ButtonNavigation ButtonNavigationOpen PositionerLeft' onclick='navigationPanel()' type='button'>
+          <!-- / %input.ButtonNavigation.ButtonNavigationOpen.PositionerLeft{ :type => "button", :onclick => "navigationPanel()" } -->
           <h1 class='PositionerLeft'>Formula Configurator</h1>
-          <input class='ButtonLogout PositionerRight' onclick='navigationSlide()' type='button'>
+          <!-- / %input.ButtonLogout.PositionerRight{ :type => "button", :onclick => "navigationSlide()" } -->
         </header>
         <!-- ASIDE -->
         <!-- MAIN -->
@@ -150,16 +150,16 @@
             <span id="SpanHeaderSeparator">|</span>
             <span data-formula-key="" id="SpanHeaderFormula">Formula Name</span>
           </h2>
-          <input class="ButtonAddSecondary ButtonDetached PositionerRight" onclick="popUpToggle('Curtain', 'PopUpParameter')" type="button" value="Add New Parameter">
+          <!-- / %input.ButtonAddSecondary.ButtonDetached.PositionerRight{ :type => "button", :value => "Add New Parameter", :onclick => "popUpToggle('Curtain', 'PopUpParameter')" } -->
           <br>
           <div class="FormulaMainContainer" id="FormulaContent"></div>
           <form id="FormFormulaGeneral">
-            <fieldset class="Plain" id="FieldsetFormulaGeneral">
+            <fieldset id="FieldsetFormulaGeneral">
               <hgroup>
                 <h3 id="TitleHeaderFormula">Formula Name</h3>
                 <h4>Formula</h4>
               </hgroup>
-              <label for="TextFormulaConfiguratorFormulaKey">Formula key</label>
+              <label for="TextFormulaConfiguratorFormulaKey">Covered Person</label>
               <input class="Long" id="TextFormulaConfiguratorFormulaKey" readonly="true" type="text">
               <br>
               <div style="display: none;">
